@@ -1,0 +1,32 @@
+there are corresponding classes for each primitive type
+
+these classes are called wrapper classes
+
+things done here are things like
+
+Integer hundred = Integer.valueOf("100");
+Boolean value = Boolean.valueOf("true");
+
+Float floatwrapper = Float.valueOf(57.0f);
+int i  = floatwrapper.intValue();       i==>57
+
+we can also do binary conversions
+
+Integer seven = Integer.valueOf("111",2);
+
+
+THESE WRAPPER CLASSES ALLOW US TO STORE THESE PRIMITIVE VALUES INTO A COLLECTION
+
+
+================================================================================
+
+CREATION
+
+    eg:
+
+    Integer integer = new Integer(5);
+                or
+    Integer integer = Integer.valueOf(5);
+                or
+    Integer integer = new Integer("5");
+               

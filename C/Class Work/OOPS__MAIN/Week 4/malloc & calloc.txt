@@ -1,0 +1,28 @@
+//malloc() & calloc()
+#include<stdio.h>
+#include <stdlib.h>
+int main(){
+	int n,i;
+	scanf("%d",&n);
+	int* ptr_1=(int*)malloc(n*sizeof(int));
+	char* ptr_2=(char*)calloc(n,sizeof(char));
+	printf("Enter number one by one\n");
+	for(i=0;i<n;i++){
+		scanf("%d",&ptr_1[i]);
+	}
+	printf("Enter character one by one\n");
+	for(i=0;i<n;i++){
+		scanf(" %c",&ptr_2[i]);
+	}
+	printf("The number details are:\n");
+	for(i=0;i<n;i++){
+		printf("%d(%0x)\t",ptr_1[i],&ptr_1[i]);
+	}
+	printf("\nThe character details are:\n");
+	for(i=0;i<n;i++){
+		printf("%c(%0x)\t",ptr_2[i],&ptr_2[i]);
+	}
+	free(ptr_1);free(ptr_2);
+	//ptr_1=realloc(ptr_1,5*sizeof(int));
+	return 0;
+}

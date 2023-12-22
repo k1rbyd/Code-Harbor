@@ -1,0 +1,56 @@
+classes are bascially reference types
+
+class instances are called reference variables
+
+class Planet
+{
+    int id;
+};
+
+Planet jupiter = new Planet();
+
+here, Planet  ==>   reference type
+      jupiter ==>   reference variable
+
+
+memory is basically of 2 types
+stack and heap
+
+all newly created objects are created on the heap
+the heap is shared by the entire java program
+
+primitive variables are always stored on the stack
+
+
+suppose this new snippet
+
+class Animal
+{
+    int id;
+    Animal(int id)
+    {
+        this.id = id;
+    }
+};
+
+Animal dog = new Animal(10);
+                                ==> suppose this gets stored in 1A
+on heap, 1A - Animal10          [location - object]
+on stack, 1A - dog              [value - object]
+
+so, in the dog, the reference is stored , which points to the actual location of dog.
+
+suppose this is created, 
+
+Animal none;
+
+then this will be stored on the stack as, 
+
+    => value - object,          null - none
+    [as it is empty, it will have no address to point to]
+
+if we were to use, none = dog
+then the stack becomes
+
+    => 1A - none
+     

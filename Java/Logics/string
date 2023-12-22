@@ -1,0 +1,96 @@
+string is a CLASSS
+
+to find the length of any strings
+
+eg:
+
+"Test".length();
+
+or we can also do,  String str = "Test";
+str.length();
+
+to access the individual letters, 
+
+str.charAt(index);
+==> str.charAt(0) ====> T
+
+suppose, str = "hello i am kaushik"
+
+if we type in,
+
+str.substring(5)    ===> " i am kaushik"
+
+we can also use,
+
+str.substring(1,5)  ===> "ell"  1 is included but 5 isnt
+
+we can also search for the characters, 
+
+str.indexOf('i');
+
+if there might be repeitions, we can use this too
+
+str.lastIndexOf('i');
+
+we can also check the starting and the end,
+
+str.startsWith("hello");    ====> here false, as the case wont match
+str.endsWith("kaushik");    ====> here its true
+
+similarily, there is equals and equalsIgnoreCase
+
+eg,
+
+    "text".equals("text");  true
+    "text".equals("Text");  false
+    "text".equalsIgnoreCase("Text");  true
+
+    [we can use strings in place of the content as well]
+
+we also got concatenation
+
+string str = "Hi";
+
+string newe = str.concat(" Helllooo");
+newe ==> Hi Helllooo
+
+========================================================
+
+1 + 2                   =           3
+"1" + "2"               =          "12"
+1 + 2 + "3"             =          "33"
+"1" + 2 + 3             =          "123"
+
+========================================================
+
+
+there is also join and replace methods
+
+
+String.join(",","A","B","C");           ==>     "A,B,C"
+String.join(".","1","2","3");           ==>     "1.2.3"
+
+"abad".replace('a','z');                ==>     "zbzd"
+
+=================================================================
+=================================================================
+=================================================================
+
+
+StringBuffer        ==> its another class in Java which is used to create new strings
+
+for eg,
+
+    StringBuffer sb = new StringBuffer("hii");
+
+    sb.append(" noo");          sb ==> hii noo
+
+StringBuffer , they are mutable
+
+we can also do,
+
+    sb.setCharAt(1,'I');
+        sb==> hIi noo
+
+        
+        STRINGBUIDER ==> GOT NO CLUE DAHEC THAT iS

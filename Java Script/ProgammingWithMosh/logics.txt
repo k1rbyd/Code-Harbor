@@ -1,0 +1,96 @@
+==> there are 2 places where we can add script to our code
+
+==> one if right in head or in body section
+
+==> the best practise is, to put it at the end of the body section
+
+==> we can just use <script></script>
+
+==> but its more better if we seperate these 2 apart
+
+==> we can just save the js seperately and then combine at the end
+
+
+==> we can also use node js to run execute the files
+
+
+
+==> to declare a variable in JS, 
+we use, let
+
+eg: let name;
+
+by default, the variables values is undefined
+
+==>we can also do this, let name = 'mine';
+
+==> rules for naming variables, 
+    i. we cant use keywords
+    ii. we cant use spaces or hypens
+
+==> if we dont want the variable to change, we can use constant
+
+    const age = 5;
+        we cant change age whereas we can change variables
+
+
+==> we can also create objects
+
+    let name = 'kaushik';
+    let age = 10;
+
+    let person = 
+    {
+        name : 'kaushik',
+        age : 10
+    };
+
+==> we can replace the name by using,
+
+    person.name = 'noppeee';
+    person['name'] = 'no';
+
+
+==> we can display it out by using ,
+    console.log(person.name);
+
+
+==> we can also make arrays,
+
+    let color = ['blue', 'red', 'yellow'];
+
+==> we can add in elements too, color[4] = 'black';
+
+    console.log(color);
+
+=========================
+
+Functions
+
+==> to declare a function, we use
+
+    function greet()
+    {
+        console.log('hello world');
+    }
+
+==> theres no need for any semicolon while we create a function
+
+==> to call it, greet();
+
+==> we can also make it take inputs
+
+    function greet(name)
+    {
+        console.log('hello ' + name);
+    }
+
+==> we can also return values from Functions
+
+function square(num)
+{
+    return num*num;
+}
+
+let n1 = square(4);
+console.log(n1);

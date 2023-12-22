@@ -1,0 +1,108 @@
+to open the jshell, just type "jshell" in terminal
+
+/exit : to exit
+
+expression,
+
+arithmetic : +,-,*,/,%
+
+a sample expression ==> to find the total number of seconds in a day,
+    24*60*60
+
+if something undefined is used, then the program will give an error
+
+PODMAS - still applies to Java
+
+to print something in java is,
+System.out.println()
+[SYSTEM SHOULD HAVE THE CAPITAL S]
+
+strings can be concatenated,
+System.out.println("ABC"+"DEF"+"GHI");
+
+escape characters,
+    \\ : \
+    \n : new line
+    \t : tab
+
+Math.random : gives a random number, and it doesnt require any parameter
+    Math.random()
+
+Math.min : gives the least number betwee the limits
+    Math.min(1,4) ==> 1
+
+similar for Math.max
+    Math.max(1,4) ==> 4
+
+
+learnt a bit, so heres a summary
+
+int i=1;
+while(i!=10)
+{
+    System.out.printf("5 * %d = %d\n",i,5*i).println();
+    i++;
+}
+
+if has the same syntax too,
+    if(statement)
+    {...}
+
+THERE IS ANOTHER WAY TO PRINT TOO,
+    System.out.printf().println()
+
+int n = 10,
+    THIS IS DECLARATION
+
+n = 100,
+    THIS IS ASSIGNMENT
+
+============================
+
+System.out.printf("%d",a+b+c).println()
+
+ONLY THIS WILL WORK
+THIS WONT
+
+System.out.println("%d",a+b+c)
+
+============================
+
+VARIABLES 
+
+==> integer have a bit storage of 4, just like any other lang
+
+==> we cant name a variable by starting with a number, it cant be a keyword too
+
+==> theres no limit of letters in the name of a variable
+
+primitive data types
+    ==> for numbers, byte   short   int   long
+                      [8]   [16]    [32]  [64]
+    
+for float, 32 bits
+for double, 64 bits
+for char, 16 bits
+
+==================================================
+
+JVM         :       Java Virtual Machine
+JRE         :       JVM + Libraries + other components
+JDK         :       JRE + Compilers + Debuggers 
+
+[Java Runtime Environment]
+[Java Development Kit]
+
+==================================================
+
+output,
+    ==> System.out.println();
+    ==> System.out.printf("%d %d",i,j).println();
+
+input,
+    ==> Scanner scanner = new Scanner(Syste.in);        [import java.util.Scanner]
+    eg:
+
+    Scanner scanner = new Scanner(System.in);
+
+    int n = scanner.nextInt();

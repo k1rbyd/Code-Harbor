@@ -1,0 +1,35 @@
+
+==> there are 2 methods in doing so
+
+    i. easy way with a window prompt
+    ii. diiffcult way with a HTML text box
+
+
+
+==> using windows prompt
+
+    let username = window.prompt("Whats your name?");
+    console.log(username);
+
+==> using HTML Text box
+
+    { Inside the html part, inside the body part}
+
+    <label> Enter your name: </label><br>
+    <input type = "text" id = "myText"><br>
+    <button type = "button" id = "mybutton">submit</button>
+    <script src = "index.js"></script>
+
+    and then to take in the input from the HTML page and store it in JS, we need to use
+
+    {in JS file}
+
+    let username;
+    document.getElementById("myButton").onclick = function()
+    {
+        username = document.getElementById("myText").value;
+        console.log(username)
+    }
+
+
+==> every input we take in will always be a string

@@ -1,0 +1,178 @@
+whenever we create a class, there are 3 things to keep in mind
+
+    ==> member variable(s)
+    
+    ==> constructors and destructors
+
+    ==> behaviour, actions and methods
+
+basic example,
+
+        public class Fan
+        {
+            private String name;
+            private String color;
+            private boolean status;
+            private int speed;
+
+            public Fan(String name, String color)
+            {
+                this.name = name;
+                this.color = color;
+                this.speed = 0;
+                this.status = false;
+            }
+
+            public void turnOn()
+            {
+                this.status = true;
+                this.speed = 1;
+            }
+
+            public void turnOff()
+            {
+                this.status = false;
+                this.speed = 0;
+            }
+        
+            public void increase()
+            {
+                if(status)
+                    this.speed++;
+                else
+                    System.out.println("Fan Has to be On for that");
+            }
+            
+            public void decrease()
+            {
+                if(status)
+                    this.speed--;
+                else
+                    System.out.println("Fan Has to be On for that");
+            }
+
+            public void giveStatus()
+            {
+                System.out.printf("Make:%s\nColor:%s\nStatus:%b\nSpeed:%d",name,color,status,speed);
+            }
+        }
+
+
+
+==> to add inheritance to a class, we have to do this
+
+eg, suppose we take AC, and we want it to inherit Fan
+    we have to do,
+
+        ==>     public class AC extends Fan
+                {
+                    . . . . . . . . . 
+                } 
+
+
+    here, AC is the subclass and Fan is the superclass
+                {Fan is extended by AC}
+               [SUbclass extends Superclass]
+
+
+====================================================================================
+
+IN JAVA, BY DEFAULT, EVERY CLASS IS A SUBCLASS AND HAS OBJECT AS SUPERCLASS
+
+BY DEFAULT, THIS IS DONE. TO EVERY CLASS EVER CREATED, IT WILL ALWAYS EXTEND OBJECT
+
+====================================================================================
+
+
+==> we can onverride any method in the superclass by creating a new method in the subclass with the same parameters
+
+eg, 
+
+
+public class Base 
+{
+	public String college;
+	public String Class;
+	
+	public void get_college(String college)
+	{
+		this.college=college;
+	}
+
+	public void get_Class(String Class)
+	{
+		this.Class=Class;
+	}
+	
+}
+
+
+public class Derived extends Base
+{
+	public String title;
+	public String employer;
+	public char employee_grade;
+	public int salary;
+
+	public void get_title(String title)
+	{
+		this.title=title;
+	}
+
+	public void get_employer(String employer)
+	{
+		this.employer=employer;
+	}
+	
+	public void get_grade(char grade)
+	{
+		this.employee_grade=grade;
+	}
+	
+	public void get_salary(int salary)
+	{
+		this.salary = salary;
+	}
+	
+	public String toString()
+	{
+		return (college+"#"+Class+"#"+title+"#"+employer+"#"+employee_grade+"#"+salary);
+	}
+}
+
+	public static void main(String[] args)
+	{
+		Derived D = new Derived();
+		D.get_Class("Class 1-A");
+		D.get_college("VIT");
+		D.get_employer("Dhana");
+		D.get_grade('S');
+		D.get_salary(100000);
+		D.get_title("HOD");
+		System.out.println(D);
+	}
+
+OUTPUT      :           VIT#Class 1-A#HOD#Dhana#S#100000
+
+
+
+=========================================================================================
+
+CONSTRUCTORS IN INHERITANCE
+
+==> whenever we create a constructor in the subclass, in the first line, automatically the superclass constructor is invoked
+
+        ==>     super();        // done implicitly
+
+        
+==> for multiple inheritance, there is none.
+
+        ==> due to the complexities it bought to C++, java has no multiple inheritance
+
+==> but we can create a chain of relationships
+
+==> Inheritance hierarchy does exist, 
+
+==> a superclass isnt a instance of a subclass, a superclass variable isnt an instance
+
+==> whereas, a subclass and subclass variable are instances of superclass

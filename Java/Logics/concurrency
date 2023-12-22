@@ -1,0 +1,146 @@
+==> Thread safety is when a method can be safetly run by mutliple threads at the same time
+
+==> if 2 threads are synchronized, then one waits for another to finish running whether or not it gets affected by it
+
+==> to avoid this, we can set locks on each method
+
+    int i = 0;
+    int j = 0;
+
+    synchronized public void incrementI()
+    {
+        //get lock for I
+        i++;
+        //release lock for I
+    }
+
+    synchronized public void incrementJ()
+    {
+        //get lock for J
+        j++;
+        //release lock for J
+    }
+
+    public int getI()
+    {
+        return i;
+    }
+
+    public int getJ()
+    {
+        return j;
+    }
+
+we do that by,
+
+    Lock lockForI = new ReentrantLock();
+    Lock lockForj = new ReentrantLock();
+
+    synchronized public void incrementI()
+    {
+        lockForI.lock();
+        i++;
+        lockForI.unlock();
+    }
+
+    synchronized public void incrementJ()
+    {
+        lockForJ.lock();
+        j++;
+        lockForJ.unlock();
+    }
+
+    public int getI()
+    {
+        return i;
+    }
+
+    public int getJ()
+    {
+        return j;
+    }
+
+==> since we are using lock here, there is no longer a need for the term synchronized
+
+
+=================================================================================
+
+                            Atomic Classes
+
+==> instead of int, we can use AtomicInteger
+
+==> AtomicInteger is one of the concurrent classes 
+
+eg, 
+    private AtomicInteger i = new AtomicInteger();
+
+and here there is neither a use for synchronized nor lock
+
+here, it is
+
+private AtomicInteger i = new AtomicInteger();
+private AtomicInteger j = new AtomicInteger();
+
+Lock lockForI = new ReentrantLock();
+Lock lockForj = new ReentrantLock();
+
+    public void incrementI()
+    {
+        i.incrementAndGet();
+    }
+
+    public void incrementJ()
+    {
+        j.incrementAndGet();
+    }
+
+    public AtomicInteger getI()
+    {
+        return i;
+    }
+
+    public AtomicInteger getJ()
+    {
+        return j;
+    }
+
+
+==> the code in any for-loop is not atomic, therby its not thread safe 
+
+=======================================
+
+        Concurrent HashMap
+
+==> its part of concurrent collections
+
+==> concurrent collections offer thread safety without significant performance impact in specific scenarios
+
+==> there is an ultra important method in this class,
+
+    computeIfAbsent(..........);
+
+==> what it does is, if the key is not present in the map, it would default the value to whatever value is returned by the mapping function
+
+like for an example, if we were to obtain the characters in a string, we can just use
+
+    import java.util.HashMap;
+    import java.util.Map;
+    import java.util.concurrent.atomic.LongAdder;
+
+    public class Test 
+    {
+        public static void main(String[] args) 
+        {
+            String str = "ABCD ABCD ABCD";
+
+            Map<Character, LongAdder> occurrences = new HashMap<>();
+
+            for (char character : str.toCharArray()) 
+            {
+                occurrences.computeIfAbsent(character, ch -> new LongAdder()).increment();
+            }
+
+            System.out.println(occurrences);
+        }
+    }
+

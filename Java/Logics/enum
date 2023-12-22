@@ -1,0 +1,103 @@
+
+==> enums are very similar to classes
+
+==> enum Season 
+    {
+        Winter, Spring, Summer, Autumn;
+    }
+
+==> to print out a enum, we can use
+
+    System.out.println(Arrays.toString(Season.values()));
+
+================================================================================================================================================
+
+eg:
+
+public enum Direction 
+{
+    NORTH("North"),
+    SOUTH("South"),
+    EAST("East"),
+    WEST("West");
+
+    private String name;
+
+    Direction(String name) 
+    {
+        this.name = name;
+    }
+
+    public String getName() 
+    {
+        return name;
+    }
+
+public Direction left() {
+        // Depending on the current direction, we return the appropriate direction to the left
+        switch (this) {
+            case NORTH:
+                return WEST; // If we are facing NORTH, to our left is the WEST
+            case SOUTH:
+                return EAST; // If we are facing SOUTH, to our left is the EAST
+            case EAST:
+                return NORTH; // If we are facing EAST, to our left is the NORTH
+            case WEST:
+                return SOUTH; // If we are facing WEST, to our left is the SOUTH
+        }
+        return this;
+    }
+ 
+    // Public method to get the direction to the right of the current direction
+    public Direction right() {
+        // Depending on the current direction, we return the appropriate direction to the right
+        switch (this) {
+            case NORTH:
+                return EAST; // If we are facing NORTH, to our right is the EAST
+            case SOUTH:
+                return WEST; // If we are facing SOUTH, to our right is the WEST
+            case EAST:
+                return SOUTH; // If we are facing EAST, to our right is the SOUTH
+            case WEST:
+                return NORTH; // If we are facing WEST, to our right is the NORTH
+        }
+        return this;
+    }
+}
+
+================================================================================================================================================
+
+enum DaysOfWeek 
+{
+    MONDAY("Monday"),
+    TUESDAY("Tuesday"),
+    WEDNESDAY("Wednesday"),
+    THURSDAY("Thursday"),
+    FRIDAY("Friday"),
+    SATURDAY("Saturday"),
+    SUNDAY("Sunday");
+
+    private String name;
+
+    DaysOfWeek(String name) 
+    {
+        this.name = name;
+    }
+
+    public String getName() 
+    {
+        return name;
+    }
+
+    public boolean isWeekday() 
+    {
+        return this != SATURDAY && this != SUNDAY;
+    }
+
+    public boolean isHoliday() 
+    {
+        return this == SATURDAY || this == SUNDAY;
+    }
+}
+
+================================================================================================================================================

@@ -1,0 +1,37 @@
+
+==> theres a method for finding the length, 
+    let username = "heeeee";
+    console.log(username.length);
+    
+==> we can get elements based on their index numbers 
+    let first letter = username.charAt(0);      // this is for the first index numbers
+
+==> we can also find specific occurances of elements
+
+    console.log(username.indexOf("o"));
+    console.log(username.lastIndexOf("o"));
+
+==> there is also a toUpperCase() and a toLowerCase()
+
+==> we can also replace stuff
+
+    let phNo = "111-222-333";
+    phNo = phNo.replace("-","");
+
+==> there is also string slicing
+
+==> slice() : extracts a section of the string and returns it as a new string, without modifying the original string
+
+
+    let name = "kaushik d";
+    let firstName;
+    let lastName;
+
+    firstName = name.slice(0,7);
+    lastName = name.slice(4);
+
+    // but here is a better method
+
+    firstName = name.slice(0,indexOf(" "));
+    lastName = name.slice(indexOf(" ")+1);
+

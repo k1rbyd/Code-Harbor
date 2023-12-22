@@ -1,0 +1,71 @@
+//Demo onNested structure
+#include<stdio.h>
+#include<string.h>
+/*struct DOB{int day;int month;int year; };*/
+struct EMP{
+    int emp_id; char emp_name[15]; float emp_sal;
+    struct DOB{
+        int day;int month;int year;
+        //struct DOB db;
+    }db;
+}e1,e2;
+int main(){
+    e1.emp_id=10; strcpy(e1.emp_name,"ABC");e1.emp_sal=12000.0;
+    e1.db.day=15; e1.db.month=3;e1.db.year=2004;
+   // scanf("%d %s %f",&e1.emp_id,&e1.emp_name,&e1.emp_sal);
+   // scanf("%d%d%d",&e1.db.day,&e1.db.month,&e1.db.year);
+    printf("%d \t %s \t %f\n",e1.emp_id,e1.emp_name,e1.emp_sal);
+    printf("%d \t %d \t %d\n",e1.db.day,e1.db.month,e1.db.year);
+    return 0;
+}
+**************
+//demo on data members & structre variable also as pointers
+typedef struct{
+    int *emp_id;
+    char*emp_name;
+    int *emp_basic_pay;
+}EMP;
+int main(){
+    EMP e1={1,"ABC",123456};
+    EMP *e2=&e1;
+    printf("%d\t %s\t %d\n",e1.emp_id,e1.emp_name,e1.emp_basic_pay);
+    printf("%d\t %s\t %d\n",e2->emp_id,e2->emp_name,e2->emp_basic_pay);
+    printf("%d\t %s\t %d\n",(*e2).emp_id,(*e2).emp_name,(*e2).emp_basic_pay);
+    return 0;
+}
+****************************
+//demo on dynamic memory allocation for data members
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+typedef struct EMP_INFO{
+    int *emp_id;
+    char *emp_name;
+}EMP;
+int main(){
+    EMP e;
+    e.emp_id=malloc(sizeof(int));
+    e.emp_name=malloc(sizeof(char)*10);
+    e.emp_id=1;
+    strcpy(e.emp_name,"ABC");
+    printf("%d \t %s\n",e.emp_id,e.emp_name);
+    return 0;
+}
+***************
+//demo on dynamic data structure
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+typedef struct EMP_INFO{
+    int *emp_id;
+    char *emp_name;
+}EMP;
+int main(){
+    EMP *e=malloc(sizeof(EMP));
+    e->emp_id=malloc(sizeof(int));
+    e->emp_name=malloc(sizeof(char)*10);
+    *e->emp_id=1;
+    strcpy(e->emp_name,"ABCD");
+    printf("%d \t %s\n",*e->emp_id,e->emp_name);
+    return 0;
+}

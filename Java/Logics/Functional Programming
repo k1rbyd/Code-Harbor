@@ -1,0 +1,91 @@
+==> in functional programming, functions are first class citizens
+
+eg,
+
+List <String> list = List.of("Apple","Ball","Cat","Dog");
+
+to print every word in a list instead of using this,
+
+printBasic(list) ==>
+
+private static void printBasic(List<String> list)
+{
+for(String string:list)
+{
+	System.out.println(string);
+}
+}
+
+we can do this, 
+
+printWithFP(list) ==>
+
+private static void printWithFP(List<String> list)
+{
+list.stream().forEach(element -> System.out.println(element));
+}
+
+here, -> is called lambda expression
+
+we can also add in more lines, for example,
+
+suppose we want to print only those words ending with "at",
+
+private static void printwithFiltering(List<String> list)
+{
+list.stream()
+	.filter(element -> element.endsWith("at"))
+	.forEach(element -> System.out.println(element));
+}
+
+for eg, if we want just the even numbers,
+
+list.stream().filter(element -> element%2==0).forEach(element ->System.out.println(element));
+
+	if we want just the odd numbers,
+
+list.stream().filter(element -> element%2==1).forEach(element ->System.out.println(element));
+
+
+	if we want the cumilative sum,
+
+int sum = list.stream().reduce(0,(number1,number2) -> number1 + number2 );
+
+System.out.println(sum);
+
+==> the lambda function can have multiple lines of code too , but we must use {} and if multiple lines are there then a return statement is neccessary, else its not needed
+
+
+==> we can also sort stuff with a simple line
+
+numbers.stream().sorted().forEach(element -> System.out.println(element));
+
+==> we can take out the duplicates too, 
+
+numbers.stream().distinct().forEach(element -> System.out.println(element));
+
+we can mix these 2 too, 
+
+numbers.stream().distinct().sorted().forEach(element -> System.out.println(element));
+
+==> we can also, have a mapping function
+
+numbers.stream().distinct().map(element -> element * element).forEach(element -> System.out.println(element));
+
+we can also do range stuff, 
+
+IntStream.range(1,11).....
+
+
+finding min, max and stuff
+
+List.of(23,12,34,53).stream().max((n1,n2) -> Integer.compare(n1,n2)).get();
+
+List.of(23,12,34,53).stream().min((n1,n2) -> Integer.compare(n1,n2)).get();
+
+if we want to make a subset and give in the values,
+
+List.of(23,13,43,52).stream().filter(e -> e%2==1).collect(Collectors.toList());
+
+here, we get, [23, 13, 43]
+

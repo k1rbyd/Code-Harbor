@@ -1,0 +1,233 @@
+HTML:
+	-> Its case-insensitive.
+	-> But we do have to be careful with the html tags
+	-> We can display documents on all platforms alike
+
+	-> Its gonna make website creating easy, and this is always linked with css
+	-> In short, HTML makes the interent better
+
+	-> We can use F12 to inspect any web pages
+	
+Tags:
+	-> A tag is a keyword or a term assinged to a peice of information.
+	-> There are 2 main tags, opening and closing tag
+	-> <a> is opening and </a> is closing
+	->    <a    	           href  =   "contact.html">     Contact us		 </a>
+	->opening, attribute name , attribute value , 	content	, 	closing tag
+
+	-> In the <head> tag, we will add <meta> tags, these will tell us how they will act on google.
+
+
+	-> We always need to start off with an index.html, as the webpages will look for this one first.
+
+Heading:
+	-> These tags are basically used to give heading to any content on the page
+	-> There are in total 6 headers
+	-> Headings 1-6
+	->h1 will have the highest and the h2 and then h3
+	-> <h1> hello </h1>
+              <h2> hello </h2>
+      	      <h3> hello </h3>
+	   <h4> hello </h4>
+		here, h1 will be the biggest font and the least will be h3
+
+Quotation:
+	-> <b> : bold text
+	-> <strong> : important text
+	-> <i> : italic text
+	-> <em> : emphasized text
+	-> <mark> : marked text
+	-> <small> : smaller text
+	-> <del> : deleted text
+	-> <ins> : inserted text
+	-> <sub> : subscripted text 
+	-> <sup>: superscript text
+	
+	-> bold and important texts are almost the same
+	-> italics and emphasized texts are almost the same
+	-> mark tag will highlight the data
+	-> small tag will make the font smaller
+	-> del tag gives out a striked out data thingy
+	-> insert tag will give the text underlined
+
+-> To comment we must click on ctrl+/
+
+Attributes:
+	-> All the elements have attributes
+	-> They simply provide additional info abt the elements
+	-> They are always specified in the start tag
+	-> They mostly are used for width, height and colour
+	-> Attributes usually come in name/value pairs like name = "Value"
+
+-> <font> tag gives the colour to your text in HTML.
+-> example:	<font color = 'blue'><b> helloo </b></font> 
+
+-> to change the background colour, we have to go to the body tag and type,
+<body bgcolor = 'blue'>
+
+
+Anchor:
+	-> These link one website to another.
+	-> The blue links we see online are hyperlinks
+
+Creating an anchor:- 
+{inside the body tag}
+<a href="https://www.youtube.com/">Youtube.com</a>
+
+for it to open up in a new tab
+<a href="https://www.youtube.com/" target="__blank">Youtube.com</a>
+
+Image:
+	-> we will use the <img> tag
+	-> IMAGE TAGS HAVE NO CLOSING TAGS
+	-> example:
+	
+	<img src ="location" alt="this is the image" />
+	
+	-> we should double check the image location
+	-> for adjusting the width and height, all we got to do is include the attributes height and width
+	-> example:
+	
+	<img src ="location" alt="this is the image"  height = "600" width = "400"/>
+
+Paragraph:
+	-> its <p> and </p>
+	-> it prints out paras
+	-> basically, it gives out a new line gap between 2 printed lines
+
+Break:
+	-> <br /> alone
+	-> It splits a sentence after where its present and displays it in the next line
+
+Table:
+	-> We make tables with the uage of table tag
+	-> <table> is used to make a table
+	-> we can use border attribute in table tag and give the border details
+	-> <tr> tag is used to specify table rows
+	-> <th> tag is used to specify table headings
+	-> <td> tag is used to give in data
+	-> we can chage the width too, we just have to add an attribute width in the table tag
+	-> we can also change the alignment , we just have to add an attribute align in the table tag
+	-> we can chang the table colour as well, we just have to add in an attribute bgcolor in the table tag
+
+List:
+	-> List tags are used to display the data present in the form of lists
+	-> They are of 3 types 	<ul>	defines an unordered list
+				<ol>	defines an ordered list
+				<li>	defines a list item
+	-> The unordered list will just use bullet points and will print out the data whereas the ordered list will print out the data along with the number
+	->  we can use the numbering as letters both uppercase and lowercase and also roman numerals to list the items of an ordered list,
+	-> example:
+		<ol type=["i" for roman numerals] ["I" for roman numerals] ["A" for caps] ["a" for lowercase]>
+		<li>One</li>
+		<li>Two</li>
+		<li>Three</li>
+		</ol>
+
+Videos:
+	-> The HTML video tag is just to embed a video on the webpage
+	-> example:
+		<video width="300" height="400" controls>
+		<source src = "location" type="video/mp4" />
+		</video>
+	-> There is also a shortcut method, all we have to do is
+		<video src="location" width="size" height="size" controls></video>
+	-> To use a youtube video, we just need to put the link in the src
+	-> example:
+		    <video width = "1000" height="600" controls muted>
+        			<source src="https://www.youtube.com/watch?v=dQw4w9WgXcQ/" type="WebM" />
+    		</video>
+
+Audio: 
+	-> For audio tag, all we need to use is
+	<audio src="location" controls>
+	</audio>
+
+Form tags:
+	-> these are the tags which are used for user input
+	-> there are multiple input types, example
+		<input type = "text">				this gives out a text box for us to reply with
+		<input type = "radio">				this gives out a single correct mcq kinda circle			
+		<input type = "checkbox">				this gives a box where we can tick			
+		<input type = "submit">				this displays the submit button 
+
+	-> to form a form page, we need to use the <form></form> tags
+	-> a basic example
+		<form action="">
+		    <label for="fname"> first name:</label><br>	
+		<input type = "text" id = "fname" name="fname" value="Enter first name"><br>
+		<label for="lname">last name:</label><br>	
+		<input type = "text" id="lname" name="lname" value="Enter last name"><br>
+		<input type="submit" value="Submit">
+		</form>
+	-> here, the id attribute has no meaning, its only useful in CSS
+
+Input:
+	-> These tags can be used in form tags and also not in form tags.
+	-> there are a lot of input types
+	-> <input type=" ">
+	-> There are,
+	text,		range,		reset,		url,
+	password,	file,		search,		week
+	email,		hidden,		submit,
+	radio,		image,		tel,
+	date,		month,		button,
+	datelocal-time,	number,		time,
+
+-> Radio tag implementation:
+	
+	<label for=""> Gender</label>
+	<input type="radio" name="gender" id="male" />
+	<label for="male">Male</label>
+	<input type="radio" name="gender" id="female" />
+	<label for="female">Female</label>
+	
+-> Checkbox tag implementation:
+
+	<label for=""> Hobbies</label><br>
+	<input type="checkbox" name="hobbies" id="cricket" /></br>
+	<label for="cricket">Cricket</label>
+	<input type="checkbox" name="hobbies" id="baseball" /></br>
+	<label for="baseball">Baseball</label>
+	
+-> Date tag implementation:
+		
+	<label for="">Date of Birth</label>
+	 <input type="date" name="" id="" /></br>
+	<label for="">date and time</label>
+	<input type="datelocal-time" name="" id="" />
+....
+
+Basically all the other input types are kinda the same.
+
+-> Input tags:
+	{all these are typed in the <input type.... />}
+	-> there are some specific attributes too, read-only and disabled
+	-> disabled makes it unclickable
+	-> we also got size, this is only the length of the input box
+	-> we can also limit the input, by using minlength and maxlength
+	-> multiple, its an attribute that specifies that the user is allowed to enter more than one value in an input field
+	-> placeholder , tells us abt the pattern
+	ex:
+	<input 
+	 type="tel"
+	 id="phone"
+	 name="phone"
+	 placeholder="123-45-678"
+	 pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+	/>
+
+	-> we also have a "required" attribute, this unless filled wont allow the user to click on submit
+
+-> Block elements are those present vertically, like Paragraph [these create a new line in the html on their own]
+-> Whereas those elements which are present horizontally are called inline elements , like <b> <i>
+
+Elements:
+	-> to create a button, all we need to type is,
+			<button>Click Here</button>
+	-> to make an arrow drop option list
+			<select name="" id="">
+				<option value="">country</option>
+				<option value="">name</option>
+				<option value="">sex</option>
+	-> to draw a line for seperation and stuff, we use "<hr/>"

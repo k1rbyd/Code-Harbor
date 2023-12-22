@@ -1,0 +1,6 @@
+condition ? true : false
+
+eg:
+
+jshell> boolean isEven = (i % 2==0 ? true : false);
+isEven ==> true

@@ -1,0 +1,18 @@
+
+==> arithmetic expression is a combination of,
+
+    operands (values, variables)
+    operators (+ - * / %)
+
+==> they can be evaluated to a value
+
+==> instead of writing, a = a+1, we can just write a+=1; 
+    this is known as the augmented assignment operator
+
+==> there is a precedence rule here,
+
+    i. parenthesis
+    ii. exponents
+    iii. multiplication and division
+    iv. addition and subtraction
+

@@ -1,0 +1,7 @@
+
+==> these are variables which cant be changed
+
+==> declaring will be
+
+    const name;
+    

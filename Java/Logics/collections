@@ -1,0 +1,73 @@
+
+==> for staters, Arrays are limited in size. a better form of them is ArrayList.
+
+==> ArrayList is a type of collection
+
+==> some important collection interfaces provided by java are,
+
+        List,
+        Set,
+        Queue,
+        Map
+
+==> List
+
+        cares about which position each object is in
+        elements can be added in by specifying positon - where should it be added in
+        if element is added without specifying position, then its added at the end
+
+        List<String> list = List.of("Hello","Hii","Heyyaa");
+
+        methods present : size(),isEmpty(),contains(),get(),indexOf()
+
+        everything here in List, is immmutable, only AL, LL and vector are mutable
+
+    ==> converting list into ArrayList
+
+        List<String> list_AL = new ArrayList(list);
+
+    ==> converting list into LinkedList
+
+        List<String> list_LL = new LinkedList(list);
+
+    ==> converting list into Vector
+
+        List<String> list_Vector = new Vector(list);    
+
+
+
+
+    ==> LISTS CAN HAVE DUPLICATES AND SO CAN AL, LL and VECTORS
+
+    ==> for traversing, we can use for loops, the standard one as well as the enhanced one
+            ==> yet, there is another method,
+
+        List<String> words = List.of("Apple","Ball","Cat");
+
+        Iterator wordsIterator = words.iterator();
+
+        while(wordsIterator.hasNext())
+        {
+            Sytem.out.println(wordsIterator.next())
+        }
+
+
+==> for sorting we can use,
+
+    List<Integer> list = List.of(1,2,3,4,7,6,5);
+    Collections.sort(list);
+
+    ==> inorder to sort custom made lists of list, then we have to make them, 
+
+    public class Test implements Comparable <Test>
+    {
+        . . . . . . . 
+    }
+
+    now this, will work,        ==> something.sort();   // this will only work now
+
+    ==> we can also override the comparator too
+
+    
+
+

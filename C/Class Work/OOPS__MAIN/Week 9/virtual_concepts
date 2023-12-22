@@ -1,0 +1,59 @@
+//Demo on Virtural class to avoid ambiguity in hybrid inhertince
+#include<iostream>
+using namespace std;
+class A
+{
+    protected:
+    int a;
+    public:
+    A(){a=1;cout<<"class A"<<endl;}
+    void put_data(){cout<<a<<endl;} //ambiguity, two path from B to A & C to A
+};
+class B:virtual public A
+{
+    protected:
+    int b;
+    public:
+    B(){b=2;cout<<"class B"<<endl;}
+    //void put_data(){cout<<b<<endl;}
+};
+class C:virtual public A
+{
+    protected:
+    int c;
+    public:
+    C(){c=3;cout<<"class C"<<endl;}
+    //void put_data(){cout<<c<<endl;}
+};
+class D:public B,public C
+{
+    protected:
+    int d;
+    public:
+    D(){cout<<"class D"<<endl;}
+};
+int main()
+{
+    D d1;d1.put_data();
+    return 0;
+}
+***********************************
+//Demo on Vritual function
+#include<iostream>
+using namespace std;
+class Base {
+public:
+     virtual void display_1(){cout << "From base class_1"<<endl;}
+     void display_2(){cout << "From base class_2"<<endl;}
+};
+class Derived : public Base {
+public:
+    void display_1(){cout << "From derived_1"<<endl;}
+    void display_2(){cout << "From derived_2"<<endl;}
+};
+int main(){
+    Base *bptr;    Derived d;    bptr = &d;
+    bptr->display_1(); //late/run time binding (with virtural)
+    (*bptr).display_2();//earlier/compile time binding (without virtual)
+    return 0;
+}

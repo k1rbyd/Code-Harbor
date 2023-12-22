@@ -1,0 +1,73 @@
+// 22BCE2700
+#include <iostream>
+using namespace std;
+
+// Relational and Logical Operator Overloading
+
+class test
+{
+    public:
+    int a;
+    test()
+    {
+        a = 1;
+    }
+    int operator||(test &obj)
+    {
+        return (a || obj.a);
+    }
+    int operator!(test &obj)
+    {
+        return (!a);
+    }
+    int operator>(test &obj)
+    {
+        return (a > obj.a);
+    }
+    int operator==(test &obj)
+    {
+        return (a == obj.a);
+    }
+    int operator<(test &obj)
+    {
+        return (a < obj.a);
+    }
+    int operator<=(test &obj)
+    {
+        return (((*this) < obj) || ((*this) == obj));
+    }
+    int operator>=(test &obj)
+    {
+        return (((*this) > obj) || ((*this) == obj));
+    }
+    int operator&&(test &obj)
+    {
+        return (a && obj.a);
+    }
+};
+
+void dispbool(int flag)
+{
+    if (flag)
+        cout << "True" << endl;
+    else
+        cout << "False" << endl;
+}
+
+int main(void)
+{
+    test t1, t2;
+    int flag;
+    t1.a += 1;
+    flag = t1 > t2;
+    dispbool(flag);
+    flag = t1 < t2;
+    dispbool(flag);
+    flag = (t1 == t2);
+    dispbool(flag);
+    flag = t1 || t2;
+    dispbool(flag);
+    flag = t1 && t2;
+    dispbool(flag);
+    return 0;
+}

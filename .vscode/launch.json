@@ -1,0 +1,84 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "TimeDepositAccount",
+            "request": "launch",
+            "mainClass": "TimeDepositAccount"
+        },
+        {
+            "type": "java",
+            "name": "Q12_p",
+            "request": "launch",
+            "mainClass": "Q12_p"
+        },
+        {
+            "type": "java",
+            "name": "Q2_progg",
+            "request": "launch",
+            "mainClass": "Q2_progg",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "Q1_progg",
+            "request": "launch",
+            "mainClass": "Q1_progg",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "Factor",
+            "request": "launch",
+            "mainClass": "Factor",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "factor",
+            "request": "launch",
+            "mainClass": "factor",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "Q2",
+            "request": "launch",
+            "mainClass": "Q2",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "Q1",
+            "request": "launch",
+            "mainClass": "Q1",
+            "projectName": ""
+        },
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "enter program name, for example ${workspaceFolder}/a.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/path/to/gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ],
+    "version": "2.0.0"
+}

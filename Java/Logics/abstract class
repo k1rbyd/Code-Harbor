@@ -1,0 +1,64 @@
+==> creating one,
+
+abstract class AbstractAnimal
+{
+    abstract public void name();
+}
+
+==> now we can inherit new classes from this and we can define "name" method in that
+        ==> and by doing that, we can access and use that method, this is just like a template
+
+==> we can extend absract classes and create concrete classes
+
+==> the typical use of abstract classes,
+
+        ==> we can give a basic outline and have the user fill up the empty spots
+
+        eg:
+
+        public abstract class Recipe
+        {
+            public void execute()
+            {
+                getReady();
+                doTheDish();
+                cleanup();
+            }
+
+            abstract void getReady();
+            absract void doTheDish();
+            absract void cleanup();
+        }
+
+        by doing then, and then extending it, like this,
+
+        public class Sandwich extends Recipe
+        {
+            public void getReady()
+            {
+                . . . . . . 
+            }
+            public void doTheDish()
+            {
+                . . . . . . 
+            }
+            public void cleanup()
+            {
+                . . . . . . 
+            }
+        }
+
+        and we can keep it up like this....
+
+==> an abstract class can be extended and can still be abstract by this, 
+
+    abstract public class A
+    {
+        . . . . . 
+    }
+
+    abstract public class B extends A
+    {
+        . . . . . 
+    }
+

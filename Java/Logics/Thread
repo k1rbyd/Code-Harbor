@@ -1,0 +1,185 @@
+
+==> we have to extend and create an instance
+
+==> there should always be, 
+	public void run()
+	{
+
+	}
+
+==> to run it, we have to call it with start method() and not run(), if we call it with run() then it wont be called as if how a thread gets called.
+
+eg,
+
+class Task1 extends Thread
+{
+	public void run()
+	{
+	System.out.println("hi");
+	}
+}
+
+public static void main(String[] args)
+{
+Task1 task = new Task1();
+task.run(); // this works but it wont be called as a thread
+task.start();
+}
+
+==> inorder to have mutithreads, we gotta implement Runnable
+
+eg,
+
+class Task1 extends Thread
+{
+	public void run()
+	{
+	System.out.println("hi");
+	}
+}
+
+class Task2 implements Runnable
+{
+	public void run()
+	{
+	System.out.println("hello");
+	}
+}
+
+public static void main(String[] args)
+{
+
+Task1 task1 = new Task1();
+task1.start();
+
+Task2 task2 = new Task2();
+Thread task2Thread = new Thread(task2);
+task2Thread.start();
+
+==> the advantage of threads is, we get to do multiple tasks at the same time
+
+=================
+DIFFERENT STATES
+=================
+
+==> NEW
+==> RUNNABLE
+==> RUNNING
+==> BLOCKED/WAITING
+==> TERMINATED/DEAD
+
+
+
+==> to give more priority, we can use the setPriority method
+
+==> theres min and max priority, min is 1, normally its 5, priority 10
+
+==> BUT WHAT WE MUST REMEMBER IS, THIS IS JUST A REQUEST. WE ARE NOT ORDERING ANYBODY ANYTHING HERE.
+
+eg,
+
+task2Thread.setPriority(10);
+
+==> if we want something in order, like this starting once this ends, we use the join method
+
+task2Thread.join();
+
+this makes the program run the below codes execute after task 2 is done
+
+==> sleep method,
+
+Thread.sleep(1000) ==> 1 sec
+Thread.sleep(10000) ==> 10 sec
+	[wait-time]
+this makes it wait for the given in-time
+
+==> yield method,
+
+its a request to give up the CPU and stop its process
+
+
+===========================
+   THE NEED FOR CONTROL
+===========================
+
+==> Executor Service takes part here
+
+==> it takes the job of monitoring all the threads running and runnable in the program
+
+==> we have to import this as well
+
+import java.util.concurrent.ExecutorService
+java.util.concurrent.Executors
+
+==> eg,
+
+ExecutorService executorService = Executors.newSingleThreadExecutor();
+
+	this enables us to run only one thread at a time
+
+==> we have to seperately call each and every single thread
+
+executorService.execute(new Task1());
+
+executorService.execute(new Thread (new Task2()));
+
+==> to kill all the threads,
+
+executorService.shutdown();
+
+==> to make it monitor multiple threads, we do
+
+ExecutorService executorService = Executors.newFixedThreadPool();
+
+and we fill in the count in the brackets
+
+for eg, for 2 Threads, we do
+
+ExecutorService executorService = Executors.newFixedThreadPool(2);
+
+if suppose there are 4 threads, then here, first 1 and 2 will get complete and then 3 and 4 will get completed
+
+but they wont wait for the other one to get complete, if 1 gets over, 3/4 might start and same for 2.
+
+at a point of time, max 2 will be running
+
+======================
+
+RETURNING A VALUE
+-------------------
+
+==> we have to implement callable
+
+class CallableTask implements Callable<String>
+{
+
+private String name;
+
+public CallableTask(String name)
+{
+this.name = name;
+}
+
+public String call() throws Exception
+{
+Thread.sleep(1000);
+return "Hello " + name;
+}
+}
+
+public class CallableRunner
+{
+
+public static void main(String[] args)
+{
+ExecutorService executorService = Executors.newFixedThreadPool(1);
+
+Future<String> welcomeFuture = executorService.submit(new CallableTask("mmhh"));
+
+String welcomeText = welcomeFuture.get();
+
+System.out.print(welcomeText);
+
+}
+}
+

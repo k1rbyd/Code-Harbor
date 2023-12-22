@@ -1,0 +1,59 @@
+to find the size of any member, 
+    ==> eg:
+                Byte.SIZE
+
+we can also , use the commands
+
+eg:                                                       ALL
+    Byte.BYTES                                       THESE TO BE 
+    Byte.MAX_VALUE                                  TYPED IN JSHELL
+    Byte.MIN_VALUE
+
+    Short.BYTES
+    Integer.MAX_VALUE
+
+==> all these will work perfectly
+
+
+converions
+
+==> explicit and implicit
+
+always possible to convert higher to lower, but inverse is hard and sometimes not impossible;
+
+==> increment types,
+    post and pre
+
+{ same for decrement as well }
+
+
+==> float and double arent that accurate when operations are done, to prevent their usage, we got
+                            BIG DECIMALS
+
+eg:
+
+BigDecimal n1 = new BigDecimal("xxx.y");
+BigDecimal n2 = new BigDecimal("zzz.xx");
+
+to add them , we gotta use
+
+n1.add(n2);
+
+to assign, 
+
+BigDecimal n3 = n1.add(n2);
+
+==> BIG DECIMALS are immutable
+
+==> for all the characters in JAVA, there is some table called unicode
+eg:
+    ==>  char c = '\u00A2';
+
+if char ch = 'A';
+then ch++, will give
+        ==> 'B'
+
+
+
+
+

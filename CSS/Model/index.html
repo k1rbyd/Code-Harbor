@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS</title>
+    <link rel="stylesheet"  href="style.css">
+    <!-- Internal CSS below -->
+    <style>
+        h2{
+            color:aquamarine;
+            background-color: red;
+        }
+        div{
+            width:400px;
+            height:200px;
+            margin: 50px 10px;
+            border: 2px solid red;
+            border-radius: 30px;
+            box-shadow: 0px 0px 20px 2px red;                              
+            transition: 0.5s;                                         
+            }
+        div:hover{
+            border: 2px solid black;
+            box-shadow: 0px 0px 20px 20px blue;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color : hsl(180, 100%, 50%); background-color : green"> Hello World</h1>                 
+    <!-- inline css above -->
+    <h2>I'm Here</h2>
+    <h3><small>Quite Small indeed, I know</small></h3>
+    <div>
+        <p style="padding: 10px">
+            {content}
+        </p>
+    </div>
+</body>
+</html>

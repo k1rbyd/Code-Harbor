@@ -1,0 +1,115 @@
+for loop,
+    =>  for(initiation; condition; increment/decrement)
+        {
+            statements;
+        }
+
+
+while loop,
+    =>  while(condition)
+        {
+            statements;
+            increment/decrement;
+        }
+
+do while loop,
+    =>  do
+        {
+            statements;
+            increment/decrement;
+        }   while (condition)
+
+examples,
+
+
+import java.util.Scanner;
+
+public class testing {
+	public static void print_triangle(int n)
+	{
+		for(int i=1;i<=n;i++)
+		{
+			for(int j=1;j<=i;j++)
+			{
+				System.out.print(j + " ");
+			}
+			System.out.println();
+		}
+	}
+	public static void print_smart(int n)
+	{
+		int i=1;
+		while(i<=n)
+		{
+			System.out.println(i+"==> "+(i*i)+"   "+(i*i*i));
+			i++;
+		}
+	}
+
+	public static void think() {
+	    Scanner scanner = new Scanner(System.in);
+	    int i=0;
+	    do {
+	    	if(i!=0)
+	    	{
+	    		System.out.println("CUBE is " +(i * i * i));
+	    	}
+	    	i= scanner.nextInt();
+	    } while (i>0);
+	    System.out.println("Thanks~~");
+	}
+
+	public static int factorial(int n)
+	{
+		if(n==0)
+			return 1;
+		if (n<0)
+			return -1;
+		int fact = 1;
+		for(int i=1;i<=n;i++)
+		{
+			fact *= i;
+		}
+		return fact;
+	}
+	public static int first_digit(int n)
+	{
+		int x;
+		while(n%10!=n)
+		{
+			x = n%10;
+			n -= x;
+			n /= 10;
+		}
+		return n;
+	}
+	public static int last_digit(int n)
+	{
+		int x;
+		x = n%10;
+		return x;
+	}
+	public static int rev(int n)
+	{
+		int res=0;
+		int x;
+		while(n%10!=n)
+		{
+			x = n%10;
+			res += x;
+			res *= 10;
+			n /= 10;
+		}
+		res += n;
+		return res;
+	}
+	public static void main(String args[])
+	{
+		Scanner scanner = new Scanner(System.in);
+		int n;
+		int res;
+		n=scanner.nextInt();
+		res=rev(n);
+		System.out.println(res);
+	}
+}

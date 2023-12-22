@@ -1,0 +1,53 @@
+Arrays allows us to store multiple values of the same data type
+
+eg,
+
+int[] marks = {12, 45 , 78};
+
+to traverse thro, we can use for loops like we normally do
+
+    for(int mark:marks)
+    {
+        System.out.println(mark);
+    }
+
+but we generally use, 
+
+    ==>     int[] marks = new int[5];
+
+we can individually acces the values with index
+==>     marks[0] = 12
+        marks[2] = 78
+
+length of arrays can be found by, 
+
+    marks.length
+    [no brackets]
+
+we can also make arrays of classes
+
+class person
+{
+    ......
+}
+
+person people = new person[5];
+
+we cannot print an array just like that, we have to use
+
+    System.out.println(marks)   ---------------> X
+    System.out.println(Arrays.toString(marks)); --------> correct
+
+to initate all the values in an array, 
+    Arrays.fill(marks,100);         ==> {100,100,100,100,100
+    }
+
+to check if 2 arrays are equal, we can use
+
+Arrays.equal(array1,array2);
+
+we can also sort arrays, by using
+
+Arrays.sort(array1);
+
+ 

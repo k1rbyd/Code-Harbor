@@ -1,0 +1,9 @@
+==> the most basic one,
+    console.log('hello world');
+    
+==> this displayss hello world just like that
+
+==> we can also do some basic mathematics questions like, 1+2 and stuff
+
+==> we can also give pop up alerts, like
+    alert('yo');

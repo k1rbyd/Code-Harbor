@@ -1,0 +1,29 @@
+
+Spring Boot introduction:
+
+GET, PUT, DELETE, EDIT, MODIFY
+		{REST}
+		
+Apachi Maven : it helps programmers manage their projects and all the things they need to build a project
+
+	--> transitive dependecy management
+	--> it also checks and test, if we want them to
+	
+	commands:
+		==> ./mvnw clean compile
+		==> mvnw [options] [<goal(s)>] [<phrase(s)>]
+		
+	--> it is a command line tool
+	
+	--> there are 3 phrases, clean default site
+		--> clean : removes temporary directories and files
+		--> default : where most useful goals live
+		--> site : where documentation is generated
+	
+	--> target directory is the place where it keeps stuff
+	
+	--> there are 4 types of goals,
+		--> compile : compiles the code into bytecode
+		--> test : runs unit tests
+		--> package : creates a jar or war file
+		--> verify : runs checks & integrations tests

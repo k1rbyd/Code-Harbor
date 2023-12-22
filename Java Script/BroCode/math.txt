@@ -1,0 +1,40 @@
+
+==> in JS, Math is an intrinsic object that provides basic mathematical funcionality and variables/constants
+
+==> to create an instance
+
+    let x = 3.69;
+
+    x = Math.round(x);  // here, it will be 4
+    x = Math.floor(x);  // here it will be 3
+    x = Math.ceil(x);  // here it will be 4
+    x = Math.pow(x,2);  // square here
+    x = Math.pow(x,3);  // cube here
+
+    let a = 1;
+    let b = 2;
+    let c = 3;
+
+    maximum = Math.max(a,b,c);
+    console.log(maximum);
+
+    minimum = Math.min(a,b,c);
+    console.log(minimum);
+
+==> there is also a PI method present,
+
+    let x = Math.PI;
+    
+
+==> we can get a random number,
+
+    let x = Math.random();
+
+    ==> this usually gives out a number between 0 and 1
+
+==> suppose we want a number between 1 to 6
+
+    let x = Math.floor(Math.random() * 6);
+
+    ==>this only gives from 0 to 5, so we gotta do
+    let x = Math.floor(Math.random() * 6) +1;

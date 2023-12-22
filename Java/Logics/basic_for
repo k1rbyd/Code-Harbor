@@ -1,0 +1,51 @@
+==> syntax,
+    for(initialisation;condition;update)
+        statement;
+
+eg: for(int i=0;i<10;i++)
+    System.out.println(5*i);
+
+    for(int i=0;i<10;i++)
+    System.out.printf("5*%d=%d",i+1,5*(i+1)).println();
+
+==============================================================
+
+for(int i=1;i<11;i++)
+    System.out.println(i);
+
+for(int i=10;i>0;i--)
+    System.out.println(i);
+
+for(int i=1;i<10;i++)
+{
+    if(i%2==0)
+    System.out.println(i*i);
+}
+
+for(int i=1;i<10;i++)
+{
+    if(i%2!=0)
+    System.out.println(i*i);
+}
+
+the next 2 programs are just for the first 5
+
+for(int i=1, j=0;j!=5;i++)
+{
+    if(i%2==0)
+    {
+        System.out.println(i*i);
+        j++;
+    }
+}
+
+for(int i=1, j=0;j!=5;i++)
+{
+    if(i%2!=0)
+    {
+        System.out.println(i*i);
+        j++;
+    }
+}
+
+==============================================================

@@ -1,0 +1,17 @@
+
+==> Spring boot is built on top of Spring Framwwork
+
+==> Spring framework is where all the hard work is done, we just use them in the spring boot
+
+==> Spring app layers
+
+	--> Presentation
+	--> Service
+	--> Persistence
+
+					{CRUD : Create, Read, Update, Delete}
+
+
+==> Repositories <===> Services 	: SERVICE LAYER
+==> Services <===> Controllers		: PRESENTATION LAYER (REST API) (controllers)
+

@@ -1,0 +1,164 @@
+Collections : Sets
+
+==> it will contain only unique things; duplication isnt allowed
+
+==> creation:
+	Set<String> set = Set.of("Hi","Helloo","heyya");
+
+==> we can add stuff with the normal add function
+
+==> HashSet, TreeSet are implementations of Set Interface
+
+==> Position of elements isnt given any importance in Sets
+
+
+
+
+HashSet creation,
+------------------
+
+Set<Integer> numbers = new HashSet<Integer> ();
+
+. . . . . . . // we add numbers one by one
+
+when we print the set, we will be able to see that it wont be in any specific order
+
+==> for the order to be saved, we can use linked list logic, ie
+	Set<Integer> numbers = new LinkedHashSet<Integer> ();
+
+TreeSet creations,
+--------------------
+
+==> compared to others, this provides more methods as its content (elements) are sorted
+
+==> due to the same reason, it also implements NavigableSet, this is where all the methods are derived
+
+some sample methods are
+
+	set.floor(element)
+	set.lower(element)
+	set.ceiling(element)
+	set.higher(element)
+
+	set.subset(inclusive start, exclusive end)
+
+
+
+Collection : Queue
+
+==> arranged in order of processing, FIFO
+
+==> Queue interface extends collection, so it has all the methods
+
+==> additional methods are as,
+	boolean add(E)
+	boolean offer(E)
+	E remove()
+	E poll()
+	E peek()
+
+PriorityQueue [implements Queue]
+---------------
+
+==> by default, all the elements will be sorted in the natural order
+
+eg,
+
+Queue<String> queue = new PriorityQueue<String>();
+
+queue.poll()	==> null
+queue.offer("Apple") ==> true
+queue.addAll(List.of("zebra","monkey","cat"));
+
+if we do poll now, it will remove the first element
+
+queue.poll() ==> Apple
+queue.poll() ==> zebra
+queue.poll() ==> monkey
+queue.poll() ==> cat
+queue.poll() ==> null
+
+
+Collection : Map
+------------------
+
+==> this does not extend collection interface, but it is a part of the collection framework
+
+==> its basically, a key-value pair storing data
+
+==> possible methods,
+
+int size();
+boolean isEmpty();
+boolean equals(object o);
+boolean containsKey(object o);
+boolean containsValue(object o);
+V get(object key);
+V put(K ket, V value);
+V remove(object key);
+V keySet();	==> to get all keys
+V values();	==> to get all values
+
+void putAll(Map<? extends K, ? extends V> paramMap);
+void clear();
+
+==> some important implementations of Map are,
+
+	HashMap
+	HashTable
+	LinkedHashMap
+	TreeMap
+
+HashMap
+--------
+
+==> its unsorted and unordered
+==> key's hashcode is used
+
+HashTable
+----------
+
+==> its thread safe aka synchronized
+==> unsorted and unordered
+==> key's hashcode is used
+
+==> HASHMAP ALLOWS A KEY WITH NULL VALUE WHEREAS HASHTABLE DOESNT
+
+LinkedHashMap
+--------------
+
+==> insertion order is maintained
+==> slower insertion and deletion
+==> faster iteration
+
+TreeMap
+--------
+
+==> sorted order is maintained
+==> it implements NavigableMap
+
+
+Creation
+----------
+
+eg,
+	
+Map<String, Integer> map = Map.of("A",3,"B",5,"Z",10);
+
+put wont work on map, as it was created using Map.of function
+
+Map<String, Integer> hashmap = new HashMap<> (map);
+
+hashmap.put("f",5);  
+this will work now
+
+
+
+==> when we dont care where the element is placed then HashMap is the best
+
+==> if we want the insertion order to be saved, then we have to go for the LinkedHashMap one
+
+==> if we want both the order and it in a sorted way, we should use TreeMap {sorting is done with the keys, not the values}
+
+
+

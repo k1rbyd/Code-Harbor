@@ -1,0 +1,61 @@
+==> Generics is basically a fashion word for template
+
+==> we can use any kind of data type for any kind of generic-created function
+
+implementation
+---------------
+
+instead of using,
+
+public class Custom
+{
+	ArrayList<String> list = new ArrayList<>();
+
+	public void add(String element)
+	{
+		list.add(element);
+	}
+	
+	public void remove(String element)
+	{
+		list.remove(element);
+	}
+}
+
+==> we can juse use generics
+
+public class Custom<T>
+{
+	ArrayList<String> list = new ArrayList<>();
+
+	public void add(String element)
+	{
+		list.add(element);
+	}
+	
+	public void remove(String element)
+	{
+		list.remove(element);
+	}
+}
+
+==> but we have to clarify and specify the type while delcaring an object variable
+
+but to make everything a template, we can do this
+
+public class Custom<T>
+{
+	ArrayList<T> list = new ArrayList<>();
+
+	public void add(T element)
+	{
+		list.add(element);
+	}
+	
+	public void remove(T element)
+	{
+		list.remove(element);
+	}
+}
+
+ 

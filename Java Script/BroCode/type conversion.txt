@@ -1,0 +1,18 @@
+
+==> changing the dataype of a value to another 
+
+eg:
+    let age = window.prompt("How old are you");
+    age = Number(age);              
+                            we can also use, String(), Boolean()
+
+    age += 1;
+
+    console.log("You are", age, "years old.");
+
+==> when we try doing something like this,
+
+    let x = "apple";
+
+    x = Number("apple");    this now contains NaN  {Not a Number}
+

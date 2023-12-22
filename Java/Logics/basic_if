@@ -1,0 +1,49 @@
+int a=1;
+int b=2;
+int c=3;
+int d=4;
+
+if(a+b > c+d)
+{
+    System.out.printf("a+b=%d",a+b).println();
+}
+else
+{
+    System.out.printf("c+d=%d",c+d).println();
+}
+
+========================================
+
+int a1 = 30;
+int a2 = 40;
+int a3 = 110;
+
+if(a1+a2+a3==180)
+{
+    System.out.println("Yess, its a triangle");
+}
+else
+{
+    System.out.println("Nopeeey, its not");
+}
+
+========================================
+
+int n=8;
+
+if(n%2==0)
+{
+    System.out.println("Its even");
+}
+else
+{
+    System.out.println("Its odd");
+}
+
+========================================
+
+[a simple if-else statement]
+
+if(condition)
+. . . . . ;   . . . . .;
+{if part}    {else part}

@@ -1,0 +1,35 @@
+
+==> at the core, spring framework is an dependency injection
+
+INTRO TO BEANS:
+----------------
+
+==> Beans are just a reference to the word "Concrete Classes"
+
+==> Its just a normal implementation and creation of methods and classes
+
+
+
+
+
+==> we can also use the @Component, if we want to skip something and just move on
+
+==> it works just as same as @Bean
+
+==> @Component has tons of friends, one such person is @Service
+
+==> @Service, makes sure it runs and it makes it happen
+
+
+==================
+
+Component Scanning:
+-------------------
+
+==> before we start the appilication, Spring will look for beans and its going to look where the beans are needed
+
+==> this will create an instance of a class and it will place it as a bean into our spring application context
+
+==> this will look where there are needed and will place the proper methods there
+
+==> this placing and stuff, is called dependecy injection

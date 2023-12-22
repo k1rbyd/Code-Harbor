@@ -1,0 +1,11 @@
+					DAO <==> Data Access Object
+
+==> it allows for the seperation between the service layer and the persistence layer
+
+==> this makes, writing the applcation, maintaing the application and testing the application easier
+
+==> we need to create a schema.sql file for this (in the resources directory)
+
+==> and then we need to create a package called dao and create dao files
+
+==> 

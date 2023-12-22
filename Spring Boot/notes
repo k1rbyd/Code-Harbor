@@ -1,0 +1,1822 @@
+
+simple json format:
+
+{
+	"first_name" : "Kaushik",
+	"grade" : 12,
+	"subjects" : {
+					{
+						"subject_name" : "Java",
+						"subject_marks" : 80
+					} 
+					{
+						"subject_name" : "Python",
+						"subject_marks" : 90
+					} 
+				},
+	"age" : 20
+}
+
+==> REST Apis mostly run on json inputs and xml inputs
+
+==> whereas, there are also SOAPS, but they cant take in/give out json responses
+
+==> spring boot alse uses the stand-alone type of execution
+
+==> basic port : 8080, for the default tomcat servers
+
+==> its not a good way to code if we have all the codes in the same pacakge, we need to seperate them
+	i.e. controller, service and stuff
+	
+==> the main spring boot main function, should have
+	@ComponentScan, as it is the one which should do that
+	
+==> for every controller class, we must give the @RestController on top
+	--> this is the combination of @Rest and @Controller
+	
+==> whenever we create a controller, we also give the url it has a link with
+	--> for example, StudentController.java should have this
+			--> @RequestMapping("/api/student/")
+		and so on and so forth
+		
+==> here is a simple example for the GET function
+	
+		@GetMapping("/get")
+		public String getStudent() {
+			return "Hello Student";
+		}
+		
+==> this GET will be reached with the URL : "/api/student/get"
+
+==> the application.properties file should consist of key-value pairs
+	--> to read a property in the controller, we use @Value
+
+==> inorder to get a json file as the output, we must tweak the code a bit
+
+==> we have to give in some additional info and get them in the main class and print them out
+	--> lets create a response class (StudentResponse)
+	
+	package com.example.response;
+
+	public class StudentResponse {
+		
+		private long id;
+		
+		private String firstName;
+		
+		private String lastName;
+
+		public StudentResponse(long id, String firstName, String lastName) {
+			this.id = id;
+			this.firstName = firstName;
+			this.lastName = lastName;
+		}
+
+		public long getId() {
+			return id;
+		}
+
+		public void setId(long id) {
+			this.id = id;
+		}
+
+		public String getFirstName() {
+			return firstName;
+		}
+
+		public void setFirstName(String firstName) {
+			this.firstName = firstName;
+		}
+
+		public String getLastName() {
+			return lastName;
+		}
+
+		public void setLastName(String lastName) {
+			this.lastName = lastName;
+		}
+		
+	}
+	
+	
+	and we will adjust the main code similarily,
+	
+	package com.example.controller;
+
+	import org.springframework.beans.factory.annotation.Value;
+	import org.springframework.web.bind.annotation.GetMapping;
+	import org.springframework.web.bind.annotation.RequestMapping;
+	import org.springframework.web.bind.annotation.RestController;
+
+	import com.example.response.StudentResponse;
+
+	@RestController
+	@RequestMapping("/api/student/")
+	public class StudentController {
+		
+		@Value("${app.name}")
+		private String appName;
+		
+
+		@GetMapping("/get")
+		public StudentResponse getStudent() {
+			StudentResponse studentResponse = new StudentResponse(1,"John","Smith");
+			return studentResponse;
+		}
+		
+		
+	}
+	
+	and the output of this will be in the json format
+		
+		=== output,
+			
+			{"id":1,"firstName":"John","lastName":"Smith"}
+			
+==> inorder to make our application a runnable jar file, we have to first 
+	--> right click the project in the project explorer
+	--> maven build, with goal as clean install
+	--> go to the project file and open terminal
+	--> type in java -jar file_name
+	
+==> if we have jar packaging of our spring boot application then we dont need any tomcat servers
+	--> but thats not the same case with the war packaging
+	
+
+==> changing ports,
+	i. we just have to go to application.properties, and then have to add this
+		--> server.port = port_number
+			eg: server.port = 8081
+		
+	ii. VM arguments, we have to give the value
+		-Dserver.port = port_number
+	
+	iii. inorder to change it when its a java jar file, we open the terminal and type
+		
+		java -Dserver.port=port_number -jar file_name
+
+
+
+==> if we want to skip any json responses, we can
+	we use the @JsonIgnore
+	
+==> we mark it above the field that we dont want populated in the json response
+
+==> for example, in the previous code...if we do this
+
+.
+.
+.
+		@JsonIgnore
+		private long id;
+		
+		private String firstName;
+		
+		private String lastName;
+.
+.
+.
+
+	=== then the output will become,
+				{"firstName":"John","lastName":"Smith"}
+				
+	--> it will skip the id variable and move on without involving it in the output
+	
+==> suppose we want the value to be shown differently, like for example
+
+.
+.
+.
+		private long id;
+		
+		@JsonProperty("first_name")
+		private String firstName;
+		
+		private String lastName;
+.
+.
+.
+
+	=== then the output will become,
+				{"id":1,"lastName":"Smith","firstName":"John"}
+
+==> here we use @JsonProperty() and also this changes the order, it makes the edited one come at last
+
+==> its ideal only if we do it for all and if we do it for none, doing it for one isnt recommended
+
+
+
+
+Project LomBok
+===============
+
+	
+	--> its built in with java
+	--> its to avoid boilerplate code (getters and setters)
+	--> it provides annotations for getters, setters, and also for constructors
+
+==> inorder to create setters and getters, we just have to
+
+	@Getter
+	@Setter
+	private long id;
+	
+==> if we want all the variables of a class to have getters and setters
+	--> we dont have to individually type that in for all, we just need to type it once on top of the class
+	
+==> we can also shorten in, we just have to add @Data
+	--> this contatins,
+	
+		a. Getters
+		b. Setters
+		c. ToString
+		d. EqualsAndHashCode
+		
+==> if we want a constructor with all the variables, then we have to add in
+	--> @AllArgsConstructor
+	
+==> if we want to have the default constructor too, then we have to add in
+	--> @NoArgsConstructor
+	
+
+
+JPA : Java Persistence API
+===========================
+
+==> ORM : Object Relational Mapping
+
+==> this maps the class to the table in the database, the variables are mapped to the columns and rows
+
+==> Hibernate is one of the implementation of JPA
+
+==> with this, we can query the DBMS
+
+==> in JPA, we also have JPQL
+	--> Java Persistence Query Language
+	
+==> class are mapped to columns
+
+==> in JPQL we refer to the class instead of the table as our class is maped to the table and we 
+	refer to the variables inside the class instead of the columns
+	
+==> using any ORM tool, we dont have to write database dependent queries, it does those on its own
+
+
+
+==> to make sure we can connect the mysql to the spring work, we have to
+	--> add in the mysql, mysql-connector-java dependency in the pom file
+	--> then we have to add in these,
+		spring.datasource.url=jdbc:mysql://localhost:3306/spring	{as we have named the schema as spring}
+		spring.datasource.username=root
+		spring.datasource.password=root#123
+		spring.jpa.database=mysql	
+		
+		{as we have set the similar values}
+		
+==> and with no code, we have connected mysql database
+
+
+
+
+
+==> to create an entity, best if we create an individual entity package, com.example.entity
+
+==> to clarify that we are using an entity, that is a class linked with a table and not a normal class
+
+==> we have to include the additional annotations
+	--> @Entity
+	--> @Table(name = "name of the table in our default schema in mysql")
+
+==> since this is an entity class, it MUST have a default constructor
+
+==> to map the variables, we have to map each seperately, like
+
+	@Column(name = "id)
+	private Long id;
+	
+==> and for the unique key, that is the primary key, we have to differentiate it from the others
+		--> @Id
+	
+==> any mistake we do in mapping, will throw an error and it will not allow the spring boot application 
+		to start
+	
+==> if we have any auto-generated value getting columns, then we have to add
+	--> @GeneratedValue
+	
+	
+==> we also have to define where our entity classes exist in the main application class
+
+	we use	--> @EntityScan("location")
+	
+
+
+REPOSITORY
+-----------
+
+==> its DAO, Data Access Object
+
+==> best if we create a seperate package itself for these kinds of activities
+
+==> all repositories will be interfaces, they wont be classes, they will be interfaces
+
+==> we will use this to interact with the database, it can be for any operation
+		--> Create
+		--> Read
+		--> Update
+		--> Delete
+
+==> we have to add in the annotation, @Repository
+
+==> since we are using JPA, we have to extend it here
+	--> there will be 2 things to pass thro here, 
+			--> a. entity, here its Student.java
+			--> b. primary key, here its id, we have to give its data type, here its Long
+			
+==> JPA repository consists of 2 repositories, 
+	--> CrudRepository {it takes in the same 2 parameters}
+	--> PagingAndSortingRepository {it takes in the same 2 parameters}
+
+
+==> CrudRepository, using this and the entity class, we can perform CRUD activities on the table
+
+==> we can sort using the other
+
+==> similiar to how to gave the links to the entity and components classes to the main application class
+
+==> we have to link these to the main file as well, for that we use the following code,
+
+	--> @EnableJpaRepositories("location")
+	
+	
+	
+	
+GET METHOD
+----------
+
+
+Putting in Queries thro Spring Boot
+-------------------------------------
+
+==> we write all the database performing activies in ther repositories
+
+==> and we dont write them in the native SQL language too
+
+==> and we also need to have acces to the service file too
+	--> we need to have an instance of the repository here, so we use
+		
+		=== @Autowired
+			StudentRepository studentRepository;
+			
+		--> to get all the records in the table, we can do this...we can create a method
+			
+			|| .findAll() is a built-in method existing in the CrudRepository in JpaRepository ||
+			
+		public void getAllStudents() {
+		
+			studentRepository.findAll();
+		}
+
+					==> this is basically, select * from student
+		
+		--> this .findAll() will return a List of Student.java objects, so we will slightly change the method
+		
+		public List<Student> getAllStudents() {
+			return studentRepository.findAll();
+		}
+		
+==> inorder to make this return a json output, so that we can show it in our api, we have to
+
+	==> we have to create a new /link in out controller
+	
+	==> we have to first
+	
+		--> @Autowired here we autowire the service file...that is
+		
+				@Autowired
+				StudentService studentService;
+		
+		--> @GetMapping("/link to be mapped")
+		and then we give in the function right below, here we do as such
+		
+		@GetMapping("/getAll")
+		public List<Student> getAllStudents() {
+			return studentRepository.findAll();
+		}
+		
+		--> this will by default return a json file and that will be put on the api
+		
+			==> we can also put in the info from student response,
+			
+			first we have to make a constructor in the response class,
+			
+				public StudentResponse(Student student) {
+					this.id = student.getId();
+					this.firstName = student.getFirst_name();
+					this.lastName = student.getLast_name();
+					this.email = student.getEmail();
+				}
+				
+			and then we have to add this new url mapping in the control file,
+			
+			@GetMapping("/getRes")
+			public List<StudentResponse> getAllStudents() {
+				
+				List<Student> studentList = studentService.getAllStudents();
+				List<StudentResponse> studentResponseList = new ArrayList<StudentResponse>();
+				
+				studentList.stream().forEach(student -> {
+					studentResponseList.add(new StudentResponse(student));
+				});
+				
+				return studentResponseList;
+			}
+				
+			==> and this will now output this in the api	
+			
+			
+			
+			
+		
+PUT API METHOD
+----------------
+
+
+==> generally API Post is used to create something on the back-end
+
+==> Best if we create an individual package for this activity
+
+==> whoever wants to consume this post api must have to pass an input in the json format
+		--> this is called as request payload
+		
+==> whereever there is a use of @GeneratedValue, we have to give an additional info whenever we are using the Post operation
+
+==> that is, a strategy
+
+	--> @GeneratedValue ( strategy = GenerationType.IDENTITY)
+		once this is done, things will automatically self increment and so on and so forth
+		
+
+==> for creating a Post operation, we use
+
+		--> @PostMapping("/link")
+
+==> here we will pass in the parameter in the function along with @RequestBody, which will convert the incoming json into our model class
+	eg:
+			@PostMapping("create")
+			public void createStudent(@RequestBody CreateStudentRequest createStudentRequest) {
+	
+			}
+	
+==> usually so far, we have made everything into json and we put it out.
+	--> but here we do the opposite, we take in the json format and we make it as normal usable data
+	
+==> and now whats pending is creating this method in the service file
+
+==> what we will do is, we will create a constructor in the Student class to get the variables values seperately
+	
+	public Student(CreateStudentRequest createStudentRequest) {
+		this.id = createStudentRequest.getId();
+		this.firstName = createStudentRequest.getFirstName();
+		this.lastName = createStudentRequest.getLastName();
+		this.email = createStudentRequest.getEmail();
+	}
+	
+==> since this class now has a defined constructor, best if it also has a 
+	--> @NoArgsConstructor
+	
+==> now we have to create a function in the service file,
+
+	public Student createStudent (createStudentRequest createStudentRequest) {
+	
+		Student student = new Student(createStudentRequest);
+		student = studentRepository.save(student);
+		return student;		//this contains the newly added count
+	}
+		
+==> and at the end, we complete the post function,
+
+			@PostMapping("create")
+			public StudentResponse createStudent(@RequestBody CreateStudentRequest createStudentRequest) {
+				Student student = studentService.createStudent(createStudentRequest);
+				return new StudentResponse(student);
+			}
+		
+	
+	
+	
+VALIDATING THE DATA COMING IN THRO THE REQUEST PAYLOAD
+--------------------------------------------------------
+
+==> to validate anything, first we have to add the @Valid sign here,
+				@PostMapping("create")
+				public StudentResponse createStudent(@Valid @RequestBody CreateStudentRequest createStudentRequest) {
+					Student student = studentService.createStudent(createStudentRequest);
+					return new StudentResponse(student);
+				}
+				
+				--> in the parameters, we must first add @Valid
+		
+
+==> we can give out commands like, @NotBlank, which checks wether the incoming json file has the data or not
+
+==> the json file gets converted into the data, and thats passed into Student..there we can do this,
+
+	@Setter
+	@Getter
+	public class CreateStudentRequest {
+	
+	@NotNull(message = "there is no id value")
+	private Long id;
+	
+	private String firstName;
+	
+	private String lastName;
+	
+	private String email;
+	
+	}
+	
+==> we can also use it where ever we want, we can keep it for just the email too, or we can have it for all too
+		--> its our wish to validate what we want
+
+--> NotBlank for Strings
+--> NotNull for numerical
+
+
+
+
+PUT API USING SPRING Data JPA
+-------------------------------
+
+==> generally, PUT API isn being used to update the record in the backend
+
+==> POST to create, PUT to update
+
+==> we can use the same requests package itself
+
+==> for our program, id is must as its the only unique value we have
+
+==> so here, we need a validation for id field here, and since its int and float and long
+		--> we use @NotNull(message = " ")
+
+==> first, lets create a PUT API in the controller class
+
+==> here its, @PutMapping("link")
+
+==> after we get the input values, we next have to figure out what we are taking in, for that we can just check one by one
+
+==> first we create an UpdateStudentRequest class
+
+		@Getter
+		public class CreateStudentRequest {
+		
+		@NotNull(message = "there is no id value")
+		private Long id;
+		
+		private String firstName;
+		
+		private String lastName;
+		
+		private String email;
+		
+		} 
+
+
+==> then we add in the method in our controller file,
+
+		@PutMapping("/update")
+		public StudentResponse updaateStudent(@Valid @RequestBody UpdateStudentRequest updateStudentRequest) {
+					Student student = studentService.updateStudentRequest(updateStudentRequest);
+					return new StudentResponse(student);
+				}
+				
+==> this is the exact same as the create student request too, and now finally, we head over to the service file
+
+==> there, we write this code,
+	
+	public Student updateStudent(UpdateStudentRequest updateStudentRequest) {
+		Student student = studentRepository.findById(updateStudentRequest.getId()).get();
+		
+		if(updateStudentRequest.getFirstName() != null && !updateStudentRequest.getFirstName().isEmpty()) {
+			student.setFirst_name(updateStudentRequest.getFirstName());
+		}
+		
+		student = studentRepository.save(student);
+		return student;
+	}
+
+==> this is done only when we give in the id and first name to change, we can just copy paste this if we want to extend our options
+
+==> that is,
+	
+		if(updateStudentRequest.getLastName() != null && !updateStudentRequest.getLastName().isEmpty()) {
+			student.setLast_name(updateStudentRequest.getLastName());
+		}
+
+		if(updateStudentRequest.getEmail() != null && !updateStudentRequest.getEmail().isEmpty()) {
+			student.setEmail(updateStudentRequest.getEmail());
+		}
+
+
+
+DELETE API
+-----------
+
+==> Delete API is generally used to delete stuff on the backend
+
+==> here, we can take in the query in the URL itself, i.e.
+
+	--> api/student/delete?id=4
+	
+	this takes in the id:4 to be deleted
+	
+==> we can also give in multiple queries together, like
+
+	--> api/student/delete?id=4&firstName=kaushik
+	
+		=== and so on and so forth
+		
+==> or we can also use a basic path variable type of approach to delete a record
+
+	--> something like, this		api/student/delete/4
+
+==> first, lets learn the above method
+
+	--> first, lets create the pull method in the controller file
+	
+		@DeleteMapping("/delete")
+		public String deleteStudent(@RequestParam("id) long id) {
+		
+			return studentService.deleteStudent(id);
+		}
+
+	--> now since we pass that to the service layer, lets create a method here,
+	
+	in the service file,
+	
+		public String deleteStudent(long id) {
+			studentRepository.deleteById(id);
+			return "Student has been deleted successfully";
+		}
+		
+		
+==> for path variable delete method, we just have to change the method in the controller file
+
+	--> @DeleteMapping("/delete/{id}")
+		public String deleteStudent(@PathVariable ("id") long id){
+			return studentService.deleteStudent(id);
+		}
+
+
+
+
+
+MORE ABOUT SPRING JPA
+----------------------
+
+==> More Queries
+	
+	--> Getting records by particular columns
+	
+	--> And, Or, In  Queries
+	
+	--> Pagination 
+		=== when we have lots of data, we need to properly paginate them
+		
+	--> Sorting
+	
+
+==> Some applications,
+
+	--> suppose we want all the records where the students first name is john, we type in
+		
+		Select * from student where first_name = 'John'
+	
+	--> this can be done using the JPA as well
+	
+	we will go to out controller file and type in this,
+	
+		
+		@GetMapping("/getByFirstName/{firstName}")
+		public List<StudentResponse> getByFirstName (@PathVariable String firstName) {
+			List<Student> studentList = studentService.getByFirstName(firstName);
+			List<StudentResponse> studentResponseList = new ArrayList<StudentResponse>();
+				
+			studentList.stream().forEach(student -> {
+				studentResponseList.add(new StudentResponse(student));
+			});	//this is to convert the list of students to list of student responses
+				
+			return studentResponseList;		
+		}
+		
+	and we will create a similar file in the service layer as well,
+	
+		public List<Student> getByFirstName (String firstName) {
+			return studentRepository.findByFirstName(firstName);
+		}
+		
+	and here we will go to the Repository file and create a function,
+	
+		List<Student> findByFirstName(String firstname);
+
+{ idk why but this didnt run for me, so welpp }
+{ and the folloiwng commands wont work as well, so ill just be noting them down }
+
+{{{ fixed this issue, the student class names had to be changed to firstName and lastName from what they were before }}}
+
+
+
+
+==> to find the queries generated by the JPA, we just have to add in this line in the application.properties
+	--> spring.jpa.show-sql=true
+	
+
+ writing AND query using JPA
+-------------------------------
+
+
+we will use the exact same logic, but just one small twist, we will add in ANDs
+			{ Controller Class }
+		@GetMapping("/getByFirstName/{firstName}/{lastName}")
+		public StudentResponse getByFirstNameAndLastName (@PathVariable String firstName, @PathVariable String lastName) {
+			return new studentResponse(studentService.getByFirstNameAndLastName(firstName,lastName);		
+		}	
+
+			{ Service Class }
+		public List<Student> getByFirstNameAndLastName (String firstName) {
+			return studentRepository.findByFirstNameAndLastName(firstName);
+		}
+			{ Repository Class }
+		List<Student> findByFirstNameAndLastName(String firstname);
+
+
+
+
+
+writing OR query using JPA
+-------------------------------
+
+
+we will use the exact same logic, but just one small twist, we will replace AND with OR
+			{ Controller Class }
+		@GetMapping("/getByFirstName/{firstName}/{lastName}")
+		public StudentResponse getByFirstNameOrLastName (@PathVariable String firstName, @PathVariable String lastName) {
+			return new studentResponse(studentService.getByFirstNameOrLastName(firstName,lastName);		
+		}	
+
+			{ Service Class }
+		public List<Student> getByFirstNameOrLastName (String firstName) {
+			return studentRepository.findByFirstNameOrLastName(firstName);
+		}
+			{ Repository Class }
+		List<Student> findByFirstNameOrLastName(String firstname);
+		
+		
+writing IN query using JPA
+-------------------------------		
+		
+==> Unlike OR or AND, IN will be quite different
+
+==> IN is used like OR but with multiple multiple parameters
+
+==> method proxy will be used here
+
+			{ inside repository class}
+		List<Student> findByFirstNameIn (List<String> firstNames);
+		
+==> best if we create an sepereate class too (in request package)
+
+	package com.example.request;
+	
+	@Getter
+	@Setter
+	public class InQueryRequest {
+		private List<String> firstNames;
+	}
+
+
+==> and we add the mapping to the Control block
+
+	@GetMapping("getByFistNameIn")
+	public List<StudentResponse> getByFirstNameIn (@RequstBody InQueryRequest inQueryRequest) {
+		List<Student> studentList = studentService.getByFirstNameIn(inQueryRequest);
+		List<StudentResponse> studentResponseList = new ArrayList<StudentResponse>();
+				
+			studentList.stream().forEach(student -> {
+				studentResponseList.add(new StudentResponse(student));
+			});	
+				
+			return studentResponseList;			
+		}
+		
+==> and we add this in the service block
+
+	public List<Student> getByFirstNameIn(InQueryRequest inQueryRequest) {
+		return studentRepository.findByFirstNamein(inQueryRequest);
+	}
+
+
+
+
+ Pagination
+-------------
+
+==> its basically like, taking 10 records, and displaying the info in different pages
+
+here is an example,
+	
+		Page No					Skip				Limit (Page Size)
+			1					0							10
+			2					10							10
+			3					20							10
+
+here, we can see that limit is constant, but skip isnt, so here
+
+	skip = (Page No - 1) * limit
+	
+==> pagination using JPA,
+
+	MySQL command will be like, select * from student limit 10 offset (gives 1-10)
+	similarily,
+		select * from student limit 10 offset 10 (gives 11-20)
+
+		{ inside controller block }
+	@GetMapping("getAllWithPagination")
+	public List<StudentResponse> getAllStudentsWithPagination (@RequestParam int pageNo, @RequestParam int pageSize) {
+		List<Student> studentList = studentService.getAllStudentsWithPagination(pageNo, pageSize);
+		List<StudentResponse> studentResponseList = new ArrayList<StudentResponse>();
+		studentList.stream(), forEach(student -> {
+			studentResponseList.add(new StudentResponse(student));
+		});
+		return studentResponseList;
+	}
+	
+	
+	and inside service, we do this (we have to make sure we use all objects from spring and not from java awt )
+	
+		public List<Student> getAllStudentsWithPagination(int pageNo, int pageSize) {
+			Pageable pageable = PageRequest .of(pageNo - 1, pageSize); // here we give -1 as its index based
+		
+			return studentRepository.findAll(pageable).getContent();	// this returns a list of the entity class which has all the pages
+		}
+		
+	URL will be like,
+	
+	http://localhost:8080/api/student/getAllWithPagination?pageNo=1&pageSize=10
+
+
+
+
+SORTING USING JPA
+------------------
+
+==> the MySQL command will be something like, select * from student order by first_name desc/asc
+
+==> implementing this in our API,
+
+	{inside the controller block}
+	@GetMapping("getAllWithSorting")
+	public List<StudentResponse> getAllStudentsWithSorting () {
+		List<Student> studentList = studentService.getAllStudentsWithSorting();
+		List<StudentResponse> studentResponseList = new ArrayList<StudentResponse>();
+		studentList.stream(), forEach(student -> {
+			studentResponseList.add(new StudentResponse(student));
+		});
+		return studentResponseList;
+	}	
+	
+	{inside service block}
+	
+	public List<Student> getAllStudentsWithSorting() {
+		Sort sort = Sort.by(Sort.Direction.ASC/Sort.Direction.DESC, "firstName" {property to be looked at});
+		
+		return studentRepository.findAll();
+	}
+	
+	
+
+==> Transient Annotation
+--------------------------
+
+==> it is used to ingore a field if that field has no respective column in the table despite being in the entity class
+
+for example, we have 4 columns 
+	--> id
+	--> first_name
+	--> last_name
+	--> email
+	
+	suppose we create another field, but no column
+	
+	--> name
+	
+	then the application will work, but it will be throwing out exceptions in the background
+	
+	so we do this while declaring the variable,
+	
+	@Transient 
+	private String name;
+	
+	==> this will help us overcome the sitution and this is extremely helpful in persistence
+	
+==> in simple words, we are ignoring this field and saying that this is not representing any column
+
+
+How to write LIKE Query in JPA
+================================
+
+==> it is used to check if a column has a specific word or not
+
+==> the MySQL query will be like,
+	select * from student where first_name like '%on%'
+	
+==> the respective codes will be,
+
+	{inside controller block}
+	@GetMapping("like/{firstName}")
+	public List<StudentResponse> like(@PathVariable String firstName) {
+	
+		List<Student> studentList = studentService.like(firstName);
+		
+		List<StudentResponse> studentResponseList = new ArrayList<StudentResponse>();
+		studentList.stream(), forEach(student -> {
+			studentResponseList.add(new StudentResponse(student));
+		});
+		return studentResponseList;
+	}
+	
+	{inside service block}
+	public List<Student> like(String firstName) {
+		return studentRepository.findByFirstNameContains(firstName);
+	}
+	
+	{inside repository block}
+	
+	List<Student> findByFirstNameContains(String firstName);
+	
+		
+	
+==> and here is another Query type, starts with
+
+		--> it is similar to like Query 
+
+		--> both side % means in anywhere
+			if it has one at the end, that it means starts with
+			if it has one at the begining then it means ends with
+			
+			eg:
+			
+				select * from student where first_name like '%on%'
+						aone
+						lone
+				 
+				select * from student where first_name like 'on%'
+						only
+						once			STARTS WITH
+
+				select * from student where first_name like '%on'
+						aon
+						bon				ENDS WITH
+						
+
+	==> we use the exact same commands, just with some tinkering and tweaking,
+	
+		===for STARTS WITH,
+		
+			{inside controller block}
+			@GetMapping("startsWith/{firstName}")
+			public List<StudentResponse> startsWith(@PathVariable String firstName) {
+			
+				List<Student> studentList = studentService.startsWith(firstName);
+				
+				List<StudentResponse> studentResponseList = new ArrayList<StudentResponse>();
+				studentList.stream(), forEach(student -> {
+					studentResponseList.add(new StudentResponse(student));
+				});
+				return studentResponseList;
+			}
+			
+			{inside service block}
+			public List<Student> startsWith(String firstName) {
+				return studentRepository.findByFirstNameStartsWith(firstName);
+			}
+			
+			{inside repository block}
+			
+			List<Student> findByFirstNameStartsWith(String firstName);
+	
+	
+	
+		===for ENDS WITH,
+	
+	
+				{inside controller block}
+			@GetMapping("endsWith/{firstName}")
+			public List<StudentResponse> endsWith(@PathVariable String firstName) {
+			
+				List<Student> studentList = studentService.endsWith(firstName);
+				
+				List<StudentResponse> studentResponseList = new ArrayList<StudentResponse>();
+				studentList.stream(), forEach(student -> {
+					studentResponseList.add(new StudentResponse(student));
+				});
+				return studentResponseList;
+			}
+			
+			{inside service block}
+			public List<Student> endsWith(String firstName) {
+				return studentRepository.findByFirstNameEndsWith(firstName);
+			}
+			
+			{inside repository block}
+			
+			List<Student> findByFirstNameEndsWith(String firstName);
+
+
+JPQL in Spring Boot
+---------------------
+
+==> it has a similar syntax to SQL query
+
+==> we refer to tables and columns in SQL Query, whereas here we refer to the class and the fields inside it
+
+==> sometimes we need to write a query, which normall cant be created by the JPA as a native SQL Query
+	--> therby at times like those we use the JPQL Query
+
+==> JPQL Select Query,
+
+	for a SQL Query like, select * from student where first_name = 'John' and last_name = 'Smith'
+	
+	we have to add this to the Repository class
+	
+	@Query("From Student where firstName = :firstName and lastName = :lastName")
+	Student getByLastNameAndFirstNme(@Param("lastname")String lastName,@Param("firstname") String firstName);
+	
+	
+==>	JPQL Update Query,
+	
+	==> suppose only want to update firstName, then we do this
+	
+	@PutMapping("updateFirstName/{id}/{firstName}")
+	public String updateStudentWithJpql (@PathVariable Long id, @PathVariable String firstName) {
+		return studentService.updateStudentWithJpql(id,firstName) + " Student(s) updates";
+	}
+
+	in service we do,
+	
+	public Integer updateStudentWithJpql (Long id, String firstName) {
+		return studentRepository.updateFirstName(id,firstName);
+	}
+	
+	in repository we do,
+	
+	@Modifying
+	@Transactional	// if we dont add these 2 annotations, then we get exceptions
+	@Query("Update Student set firstName = :firstName where id = :id")
+	Integer updateFirstName(Long id, String firstname);
+	
+	{ Its set in Integer type, as it takes count of how many records we are modifying }
+	{ here its add, so its integer. But if its delete or something, we can use void type }
+	
+==> JPQL Delete Query,
+
+	@PutMapping("deleteByFirstName/{firstName}")
+	public String deleteStudent ( @PathVariable String firstName) {
+		return studentService.deleteStudent(firstName) + " Student(s) deleted";
+	}
+
+	in service we do,
+	
+	public Integer deleteStudent (String firstName) {
+		return studentRepository.updateFirstName(firstName);
+	}
+	
+	in repository we do,
+	
+	@Modifying
+	@Transactional	
+	@Query("Delete Student set firstName = :firstName")
+	Integer deleteByFirstName(String firstname);
+	
+
+
+
+RELATIONSHIP BETWEEN DIFFERENT TABLES
+=======================================
+
+==> one-one means, one student will have one address and also one address will only have one student
+
+==> one-many means, one student might study more than one subjects and so on and so forth
+
+==> suppose we have 2 tables, 
+
+	--> a student table, where we have a student id as primary and a address id as foreign
+	--> an address table, where we have address id as primary
+	
+	the table that has the foreign key is the owning side of the relationship, here 'student' table
+	and the other table is known as the non-owning side of the relationship, here 'address' table
+	
+	==> we have to have a Address.java class created with the respective @Column notations for its fields
+		--> and also the @id for the primary key
+	
+	@Getter
+	@Setter
+	@NoArgsConstructor
+	@Entity
+	@Table(name="address")
+	public class Address {
+	
+		@Id
+		@GenerateValue(strategy = GenerationType.IDENTITY) //auto-increment
+		@Column(name="id")
+		private Long id;
+		 
+		@Column(name="street")
+		private String street;
+		
+		@Column(name="city")	
+		private String city;
+
+	}	
+	
+	
+	==> we have to create an AddressRepository.java, an interface extending the JpaRepository
+	
+	==> so first we have to change our student.java class, to this
+	
+	
+	@Getter
+	@Setter
+	@NoArgsConstructor
+	@Entity
+	@Table(name="student")
+	public class Student {
+	
+		@Id
+		@Column(name="id")
+		private Long id;
+		 
+		@Column(name="first_name")
+		private String firstName;
+		
+		@Column(name="last_name")	
+		private String lastName;
+
+		@Column(name="email")	
+		private String email;
+		
+		@OneToOne
+		@JoinColumn(name="address_id")
+		private Address address;
+	
+		.
+		.
+		.
+	}
+	
+	==> now we have to edit this in the Request class as well,
+	
+	@Getter
+	@Setter
+	public class CreateStudentRequest {
+	
+		@NotNull(message = "there is no id value")
+		private Long id;
+		
+		private String firstName;
+		
+		private String lastName;
+		
+		private String email;
+		
+		private String street;
+		
+		private String city;
+	}
+	
+	==> and also in the Response class as well,
+	
+		public class StudentResponse {
+		
+			private Long id;
+			
+			private String firstName;
+			
+			private String lastName;
+			
+			private String email;
+			
+			private String street;
+			
+			private String city;
+					
+				public StudentResponse(Student student) {
+					this.id = student.getId();
+					this.firstName = student.getfirsNname();
+					this.lastName = student.getlastName();
+					this.email = student.getEmail();
+					
+					this.street = student.getAddress().getStreet();
+					this.city = student.getAddress().getCity();
+				}
+		}
+		
+	==> INSERTING RECORDS,
+	
+		--> first we insert the records into the parent table
+			
+		--> then we obtain the foreign key, and then we insert them into the child table
+		
+		==> now we edit the createStudent method in the service layer
+		
+		
+		public Student createStudent (CreateStudentRequest createStudentRequest) {
+			
+			Student student = new Student(createStudentRequest);
+			
+			Address address = new Address();
+			address.setStreet(createStudentRequest.getStreet());
+			address.setCity(createStudentRequest.getCity());
+			
+			address = addressRepository.save(address);		// we have to @AutoWired this, like we did for that too
+			student = studentRepository.save(student);
+			return student;
+		}
+		
+	==> WRITING THE JOIN QUERY
+		
+		==> in MySQL we write it as,
+		
+			select * from student s inner join address a on s.address_id = a.id where a.city = 'Delhi'
+			
+		@GetMapping("/getByCity/{city}")
+		public List<StudentResponse> getByFirstName (@PathVariable String city) {
+			List<Student> studentList = studentService.getByCity(city);
+			List<StudentResponse> studentResponseList = new ArrayList<StudentResponse>();
+				
+			studentList.stream().forEach(student -> {
+				studentResponseList.add(new StudentResponse(student));
+			});	
+			
+			return studentResponseList;		
+		}
+		
+		in our service layer we add,
+		
+			publuc List<Student> getByCity (String city) {
+				return studentRepository.findByAddressCity(city);
+			}
+		
+		and in our StudentRepository class we add,
+		
+			List<Student> findByAddressCity (string city);
+			
+		
+		=== DOING THE SAME USING JPQL
+		
+			==> inside the Repository,
+			
+				@Query("From Student where address.city = :city")
+				List<Student> getByAddressCity (string city);
+			
+			==> and then we will add this in our service layer and comment out the other line
+
+			publuc List<Student> getByCity (String city) {
+				return studentRepository.getByAddressCity(city);
+				//return studentRepository.findByAddressCity(city);
+			}				
+
+	{ A SIMPLE TIP, WHENEVER ITS POSSIBLE TO HIT THE END GOAL WITH JUST METHOD PROXY, GO FOR IT }
+	
+
+==> Fetching are of 2 types,
+	
+	--> eager {default one}
+	--> lazy
+	
+	==> suppose we need just the student details from our table, and we use eager type of fetching,
+		--> we will get all the details including that of the address table, as they are linked 1-1
+		
+	==> therby, using the default: eager type, puts an overload on our API and this may impact the pressure of our API
+	
+	
+		==> inorder to make it lazy loading...we have to have some extra lines
+		
+			we have to change a line in the Student.java
+		
+		.
+		.
+		.
+		.
+		@OneToOne(fetch = FetchType.LAZY)
+		@JoinColumn(name="address_id")
+		private Address address;
+		.
+		.
+		.
+		.
+		
+		==> this will make the fetch type as lazy
+		
+		
+==> BI-DIRECTIONAL ONE-ONE RELATIONSHIP
+
+	
+	==> we have to create the object of the owning side in the non-owning side, i.e. in address class
+	
+	@Getter
+	@Setter
+	@NoArgsConstructor
+	@Entity
+	@Table(name="address")
+	public class Address {
+	
+		@Id
+		@GenerateValue(strategy = GenerationType.IDENTITY) //auto-increment
+		@Column(name="id")
+		private Long id;
+		 
+		@Column(name="street")
+		private String street;
+		
+		@Column(name="city")	
+		private String city;
+		
+		// new code comes below
+		
+		@OneToOne(mappedBy = "address")
+		private Student student;
+
+	}	
+
+	==> since its defined in both the sides, owning and non-owning
+			--> this is now bidirectional one-one
+			
+		
+==> ONE-MANY RELATIONSHIP
+
+	==> lets take a new table subject
+	
+	==> and in the subject table, lets have student id
+	
+	==> logically speaking, many subjects are learnt by one student
+	
+	==> so from subject tables perspectives, it is having many-one relationship
+	
+	==> here, the subject table has the foreign key student id, so its on the owning side here
+	
+	==> we also have to create a subjectRequest class
+	
+	and also add this in out studentRequest class
+	
+		private List<CreateSubjectRequest> subjectsLearning;
+		
+	==> the basic overlook for the CreateSubjectRequest.java will be,
+	
+	
+	==> here is a basic overlook on Subject.java
+	
+		@Getter
+		@Setter
+		@NoArgsConstructor
+		@Entity
+		@Table(name = "subject")
+		public class Subject {
+			
+			@Id
+			@GeneratedValue(strategy = GenerationType.IDENTITY)
+			@Column(name="id")
+			private Long id;
+			
+			@Column(name="subject_name")
+			private String subjectName;
+			
+			@Column(name="marks_obtained")
+			private String marksObtained;
+		
+			//imp code below
+			
+			@ManyToOne
+			@JoinColumn(name="student_id")
+			private Student student;
+			
+		}
+		
+		
+		==> now we have to declare it in the Student.java file too,
+		
+			{inside Student.java file}
+			
+			.
+			.
+			.
+			.
+			.
+			
+			@OneToMany(mappedBy = "student")
+			private List<Subject> subject;
+			
+			
+	Student --> Subject		: 	One-Many
+	Subject --> Student		:	Many-One
+	
+	
+
+==> INSERTING A RECORD, WITH ONE-MANY USING JPA
+
+	==> first we insert records in address table
+	==> and then we insert records in student table
+	==> and then we insert them in the subject table
+	
+	so the serice layer, createStudent method will become,
+	
+		public Student createStudent (CreateStudentRequest createStudentRequest) {
+			
+			Student student = new Student(createStudentRequest);
+			
+			Address address = new Address();
+			address.setStreet(createStudentRequest.getStreet());
+			address.setCity(createStudentRequest.getCity());
+			
+			address = addressRepository.save(address);		
+			student = studentRepository.save(student);
+			
+			List<Subject> subjectsList = new ArrayList<Subject>();
+			if(createStudentRequest.getSubjectsLearning() != null) {
+				
+				for(CreateSubjectRequest createSubjectRequest : createStudentRequest.getSubjectsLearning()) {
+					
+					Subject subject = new Subject();
+					subject.setSubjectName(createSubjectRequest.getSubjectName());
+					subject.setMarksObtained(createSubjectRequest.serMarksObtained());
+					subject.setStudent(student);
+				
+					subjectsList.add(subject);
+				}
+				
+				subjectRepository.saveAll(subjectsList);	 // we have to @AutoWired this, like we did for that too
+				
+			}
+			
+			student.setLearningSubjects(subjectsList);
+			
+			return student;
+		}	
+	
+		==> we have to create a subjectResponse class, like this
+		
+			@Getter
+			@Setter
+			public class SubjectResponse {
+				
+				private Long id;
+				
+				private String subjectName;
+				
+				private Double marksObtained;
+				
+				public SubjectResponse(Subject subject) {
+					this.id = subject.getId();
+					this.subjectName = subject.getSubjectName();
+					this.marksObtained = subject.getMarksObtained();
+				}
+			}
+			
+	
+	==> so while running, we have to give in an input like this,
+	
+		{
+			"firstName" : "John",
+			"lastName" : "Smith",
+			"email" : "john@gmail.com",
+			"street" : "Happy Street",
+			"city" : "Delhi",
+			"subjectsLearning" : [
+				{
+					"subjectName" : "Java",
+					"marksObtained" : 80
+				},
+				{
+					"subjectName" : "MySQL",
+					"marksObtained" : 70
+				}
+			]
+		}
+			 
+				
+API Documentation
+-------------------
+
+==> Importance of documentation,
+	
+		i. providing an idea to the consumer on what all APIs we are providing
+		ii. providing the respective API URLs
+		iii. providing a basic knowledge on what to pass and what to expect in return
+		
+
+SWAGGER
+---------
+
+==> its a tool used for the documentation of APIs
+
+==> it automatically creates documentation for the APIs
+	--> so less manual efforts for API documentation
+
+==> we can easily consume APIs using Swagger UI
+
+==> to enable Swagger in our application, we must add this in our pom file
+
+	<dependency>
+		<groupId>io.springfox</groupId>
+		<artifactId>springfox-swagger2</artifactId>
+		<version>2.9.2</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>io.springfox</groupId>
+		<artifactId>springfox-swagger-ui</artifactId>
+		<version>2.9.2</version>
+	</dependency>
+
+==> and then in our application class, we have to add in
+	--> @EnableSwagger2
+
+==> now, with the application running, we have to enter
+	
+	localhost:8080/swagger-ui.html
+	
+	{ open and u will see all the available options and stuff }
+	
+
+OPEN UI WITH SPRING BOOT
+-------------------------
+
+==> the dependency to add in the pom file is,
+
+	<dependency>
+		<groupId>io.springdoc</groupId>
+		<artifactId>springdoc-openapi-ui</artifactId>
+		<version>1.5.6</version>
+	</dependency>	
+
+==> we need no additional annotation
+
+==> once we run the application, 
+
+	localhost:8080/swagger-ui.html
+
+==> the UI is different, but its the same content
+
+
+
+LOGGING IN SPRING BOOT
+-----------------------
+
+==> Logs are helpful to debug and troubleshoot the issue
+
+==> different levels for logging,
+				{ in hierarchy order }
+		Error < Warn < Info < Debug < Trace
+		
+==> by default, Spring boot has Info logging level enabled
+
+==> different log levels for different packages and classes
+
+==> create log file which contains all logs for Spring Boot Application
+
+==> we dont have to add any dependency to use logging in spring boot
+
+==> we will now do all the following code modifyications in the student controller class
+
+	--> first we will create an instance of logger
+	
+		Logger logger = LoggerFactory.getLogger(StudentController.class);
+		
+		suppose we want to place some loggers in the function call,
+		@GetMapping("/getAll")
+		public List<StudentResponse> getAllStudents() {
+		
+		}
+		
+		we will add in these commands,
+			diff levels diff commands as such,
+		
+		logger.error("Inside Error");
+		logger.warning("Inside wWrning");
+		logger.info("Inside Info");
+		logger.debug("Inside Debug");
+		logger.trace("Inside Trace");
+
+
+==> to change the logging level in spring boot, we have to add this in the application.properties,
+
+	logging.level.root = debug {if we want debug} / trace {if we want trace}
+		=== by default it will be in info level
+		
+==> we can aldo have different logging levels for different pckages
+
+	--> logging.level.root		==> his means the entire application
+	--> logging.level."package location and name"		==> this logs just the specified package
+			eg : for the controller package,
+					logging.level.com.example.controller = trace 	{makes it trace just for it alone}
+					
+	--> we can also make it individual for the classes inside the controller too,
+	
+			eg : for the StudentController class in the controller package, we do
+					logging.level.com.example.controller.StudentController = trace 
+					
+	
+==> we can create a file to save all the logs and its information
+		--> we have to add in a line in the application.properties for this,
+			
+			logging.file.name = app.log
+			
+			
+			
+			
+SPRING AOP { ASPECT ORIENTED PROGRAMMING }
+-------------------------------------------
+
+==> it seperates logic and provides modularity
+
+==> we have additional uses,
+		
+		--> Point Cut : which methods to intercept?
+		
+		--> Advice : when to intercept methods?
+				a. Before	: to intercept the method before it gets implemented
+				b. After	: to intercept the method after its implementation but before it returns
+				c. AferReturning : to intercept the method after it returns the value
+				d. Around	: its the combination of before and after-returning, intercepting it twice
+				
+		--> Aspect : its the combination of point cut and advice
+				=== what all methods to intercept and when to intercept them too
+				
+		--> Join point : execution instance of an advice
+		
+BEFORE ADVICE
+---------------
+
+==> we have to first create a seperate package, aop and a file like, { and also add this in the component scan in the main application class }
+
+	package com.example.aop;
+	
+	{all imports}
+	
+	public class AspectConfig {
+	
+		Logger logger = LoggerFactory.getLogger(getClass());
+	
+		// creating a before-advice for all the methods in all the classes under controller
+		
+		@Before(value = "execution(*.com.example.controller.*.*(..))")		// (..) means all types of methods, they can be one method paramenter having method or maybe 2 or even more
+		public void beforeAdvice(JoinPoint joinPoint) {
+			logger.info("Inside before advice");
+		}
+		
+	}
+	
+	==> we did it for methods with all method parameters, but what if we want to do it only for those which take in one parameter, then we do
+	
+		@Before(value = "execution(*.com.example.controller.*.*(..)) and args(object)")				
+		public void beforeAdvice(JoinPoint joinPoint, Object object) {
+			logger.info("Inside before advice" and here is an additional info : " + object);
+		}	
+		
+		=== this will only do it for those methods which require one method parameter
+
+	==> similarily if we want only for methods having 2 method parameters, then we do
+	
+		@Before(value = "execution(*.com.example.controller.*.*(..)) and args(object1,object2)")				
+		public void beforeAdvice(JoinPoint joinPoint, Object object1, Object object2) {
+			logger.info("Inside before advice" and here is an additional info : " + object1 + " , " + object2);
+		}		
+		
+	==> and so on and so forth
+	
+	
+	
+	
+AFTER ADVICE
+-------------
+
+==> everything stays the same, we just change the keyword from Before to After
+
+==> for example, here's the After and for the methods with only one method parameter
+
+			@After(value = "execution(*.com.example.controller.*.*(..)) and args(object)")				
+			public void afterAdvice(JoinPoint joinPoint, Object object) {
+				logger.info("Inside before advice" and here is an additional info : " + object);
+			}	
+			
+			
+			
+AFTER-RETURING ADVICE
+-----------------------
+
+==> here, almost the same syntax, but we include some few extra words
+
+		@AfterReturning(value = "execution(*.com.example.controller.*.*(..)) and args(object)", returning = "returningObject")				
+		public void ARAdvice(JoinPoint joinPoint, Object object, Obhect returningObject) {
+			logger.info("Inside before advice" and here is an additional info : " + returningObject);
+		}	
+		
+
+
+
+AROUND ADVICE
+--------------
+
+==> this is a combination of before and after-returning
+
+==> it is used to intercept a method 2 times
+
+==> here the code changes quite a lot, here is an example
+
+		@Around(value = "execution(*.com.example.controller.*.*(..)) and args(object)")		
+		public void AroundAdvice(ProceedingJoinPoint proceedingJoinPoint, Object object) {
+			logger.info("Request = " + object);
+			
+			Object returningObject = null;
+			
+			try {
+				returningObject = proceedingJoinPoint.proceed();
+			} catch (Throwable e) {
+				e.printStackTrace();
+			}
+			
+			logger.info("Request = " + returningObject);
+		}
+
+==> this is how you write code for this kinda advice 
+
+
+
+{ TO PROPERLY UNDERSTAND ALL THESE ADVICE METHODS, WE HAVE TO PUT NECESSARY DEBUG POINTS AND SEE THEM }
+
+
+
+
+
+
+
+SPRING BOOT SCHEDULER : CRON JOB
+---------------------------------
+
+--> it performs a task in a fixed interval
+
+--> we can update the interval as to our interests
+
+--> link to use : cronmaker.com
+	==> we will get cron expressions from this site, for example
+	
+		we want every 2 mins, then the expression will be,
+		
+			0 0/2 * 1/1 * ? *
+			s m/h   d/m   y
+			
+			{ seconds, minutes, hours, day, month, year }
+			
+			
+--> to use scheduler in our spring boot application, we first need to enable it in our main class
+
+	we have to add in the annotation,
+	
+	@EnableScheduling
+	
+	==> and then, in the service layer, we have to create this file, MyScheduler.java
+	
+	package com.example.service;
+	
+	{ all imports }
+	
+	
+	@Service
+	@public class MyScheduler {
+	
+		@Scheduled(cron = " 0 0/1 * 1/1 * ?")	// this is for every minute
+		public void firstScheduler() {
+			System.out.println(new Date());
+		}
+	}
+	
+	
+	
+	
+	
+DEPLOYMENT TO HEROKU
+---------------------
+
+--> Heroku is a Platform as a Service (PaaS) Cloud Provider
+
+--> its is owned by Salesforce
+
+--> we can deploy our java, node js, scala, python and PHP applications on heroku
+
+--> Applications can be deployed for free
+
+--> just sign-up { other all activities are easy to do, just upload the codes on GitHub and progress }
+
+
+--> now we have to download heroku cli
+

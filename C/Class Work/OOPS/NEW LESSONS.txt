@@ -1,0 +1,28 @@
+/*
+instead of comparing using 2 or 3 if statements, we can just use
+
+int a,b,c;
+scanf("%d%d",&a,&b);
+c=(a<b)?a:b;
+printf("%d is the greatest",c);
+return 0;
+
+these are called terinary operators.
+
+to access the global value, we must use the term extern, look into variable file for further application
+
+to print the address of a variable
+
+int i=3;
+printf("%u", &i);
+
+but, 
+
+printf("%u", *(&i));     // this will print the value of the variable i, same as ("%d",i)
+
+
+
+
+
+
+*/

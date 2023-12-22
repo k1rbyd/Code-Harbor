@@ -1,0 +1,189 @@
+==> its important to handle exceptions properly
+
+==> we must return back enough info to debug the error
+
+==> whenever an exception occurs, there will be a stack of them
+
+==> this stack, we call it as stack trace
+
+==> incase we predict the error and wanna cross check, we can use
+
+    {
+    . . . . . 
+         . . . . 
+          . . . .
+    . . . . .
+    } 
+    catch(Exception ex)
+    {
+        ex.printStackTrace();
+    }
+
+==> when an exception is handled, the below part wont be run, it will be returned as is
+
+==> if we want to be specific, like for example NullPointerException
+
+    catch(NullPointerException ex)
+    {
+        System.out.println("NULL POINTER");
+        ex.printStackTrace();
+    }
+
+==> if we want something to happen once an exception is caught, is by using the function "finally"
+
+    catch(NullPointerException ex)
+    {
+        System.out.println("NULL POINTER");
+        ex.printStackTrace();
+    }
+    finally
+    {
+        . . . . . .
+    }
+
+==> its used when we want to make sure that all the objects created are closed
+
+==> it helps us to execute some code irrespective of whether an exception happens or not
+
+
+========================================================
+
+Checked and UnChecked exception
+
+==> when we are forced to tackle some exceptions, then those are called Checked exceptions
+
+==> due to the fact that we need to use them and that they are risky, are what force us to use this exception
+
+EXCEPTION HIERARCHY
+--------------------
+
+Errors [class Error extends Throwable]
+    These are the errors which the programmer cant handle
+
+Exceptions [class Exception extends Throwable]
+    These are the errors which can be handled by programmers
+
+in exceptions, there are 2 types, checked and unchecked
+
+RuntimeExceptions (Unchecked exceptions) [class RuntimeExceptions extends Exception]
+
+    eg: NullPointer, ArrayIndexOutOfBounds are subclasses of RuntimeExceptions
+
+NOT - RuntimeExceptions (Checked exceptions) [class ?_Exceptions extends Exception]
+
+    eg:
+
+    InterruptedExceptions (Checked exceptions) [class InterruptedExceptions extends Exception]
+
+[Checked ==> Risky]
+
+---------------------------------------------------------------------
+
+class Amount
+{
+    private String currency;
+    private int amount;
+
+    public Amount(String currency, int amount)
+    {
+        super();
+        this.currency = currency;
+        this.amount = amount;
+    }
+
+    public void add(Amount other)
+    {
+        this.amount = this.amount + other.amount;
+    }
+
+    public String toString
+    {
+        return amount + " " + currency;
+    }
+}
+
+class Runner
+{
+    public static void main(String[] args)
+    {
+        Amount a = new Amount("USD",10);
+        Amount b = new Amount("USD",30);
+        Amount c = new Amount("INR",30);
+
+        a.add(b);
+        System.out.println(a);
+        a.add(c);
+        System.out.println(a);          // both will run, but they 
+                                            shouldnt. as INR is there
+    }                                      
+}
+
+
+so here, we change,
+
+    public void add(Amount other)
+    {
+        if(!this.currency.equals(that.currency))
+        {
+            throw new RuntimeException("Currencies Dont Match");
+        }
+
+        this.amount = this.amount + other.amount;
+    }
+
+or we can do
+
+    public void add(Amount other) throws Exception
+    {
+        if(!this.currency.equals(that.currency))
+        {
+            throw new Exception("Currencies Dont Match");
+        }
+
+        this.amount = this.amount + other.amount;
+    }
+
+creating custom exceptions
+
+class CurrenciesDontMatchException extends Exception
+{
+    public CurrenciesDontMatchException(String msg)
+    {
+            super(msg);
+    }
+}
+
+then we make the main like this, 
+
+    public void add(Amount other) throws CurrenciesDontMatchException
+    {
+        if(!this.currency.equals(that.currency))
+        {
+            throw new CurrenciesDontMatchException("Currencies Dont Match");
+        }
+
+        this.amount = this.amount + other.amount;
+    }
+
+if the consumer cant do anything abt the error, then we go with the RuntimeException like this,
+
+class CurrenciesDontMatchException extends RuntimeException
+{
+    public CurrenciesDontMatchException(String msg)
+    {
+            super(msg);
+    }
+}
+
+
+
+Basic Guidelines
+----------------
+
+i. never hide exceptions
+ii. do not use it for flow control
+iii. think about your user
+iv. think about your support team
+v. think about the calling method
+vi. have global exception handling
+

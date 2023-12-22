@@ -1,0 +1,28 @@
+to create a class all we have to type is,
+
+class name
+{
+    ....
+}
+
+to initiate a class, we have to type
+
+eg,
+
+    class Planet
+    {
+        .....
+    }
+
+    Planet earth = new Planet()
+
+we can add in methods to the class as well, 
+
+    class Planet
+    {
+        void revolve()
+        {
+            System.out.println("It revolves arount the Sun");
+        }
+    }
+

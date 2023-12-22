@@ -1,0 +1,342 @@
+CSS:
+
+-> CSS stands for Casading Style Sheets
+-> it can control the layout of multiple web pages all at once
+
+Syntax:
+    -> it consits of selector{property:value;property:value}
+
+CSS Types:
+    -> External CSS 
+    -> Internal CSS 
+    -> Inline CSS 
+
+-> Both inline and internal CSS are in the HTML file, inline CSS is used in the body whereas internal CSS is used in the head.
+-> The external CSS file must be connected to the HTML
+
+example:
+-> to link our HTML and CSS files, all we need to do is,
+<link rel="stylesheet"  href="style.css">
+
+Whenever we are linking these 2, we must never forget to use the <link> tag
+
+CSS Selectors:
+    
+    -> they are used to "find" or select the HTML elements you want to style
+    -> There are mainly 5 types:
+        -> Simple selectors: they select elements based on class and id [they select things like h1 h2]
+        -> Combinator selectors : they select elements based on a specific relationship between them
+        -> Pseudo-class selectors: they select elements based on a certain state
+        -> Pseudo-elements selectors: they select and style a part of an element
+        -> Attribute selectors: they select elements based on an attribute or attribute value
+
+        -> When the simple selector tag is used, all elements in the tag will be customized
+        -> Whereas in class or id selector, only those unique & specific elements will be customized
+
+        -> for simple selector no symbols required
+        -> for class selectors we need .
+        -> for id selectors we need #
+
+CSS Colors:
+    -> Here, colors are specified using predefined color names such as RGB, HEX, HSl, RGBA
+
+CSS Background:
+    -> There are multiple background properties in CSS
+        ->background-color
+        ->background-image
+        ->background-repeat             [background-repeat:x means only x-axis, :y means only y axis]
+        ->background-attachment         [background-attachment: fixed means that the image will be displayed if space is there when scrolling]
+        ->background-position           [background-position:center center]
+        ->background-size               [background-size: cover means full website]
+
+-> Universal selector:
+    {inside the head}
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+    </style>
+
+-> Background image implementation:
+    {inside style}
+        [the element where we are gonna input something]{
+            background-image: url(location);
+            width=100%;
+            height=100vh
+        }
+
+    {inside body}
+        [element]<h1>hahahaha</h1>
+        [/element]
+
+CSS Borders:
+        -> There are many borders present in CSS.
+        -> There are, dotted border, dashed border, solid border and double border.
+
+        -> Border-property shortcut:
+            Border:width style color;
+            -> we can also say what part we want to , examples:
+                -> border-left: 20px solid {some color};
+                -> border-right: 10px double {some color};
+        
+Outline in CSS:
+        -> There are multple outline choices too, they being
+        dotted,     groove,     none,
+        dashed,     ridge,
+        solid,      inset,
+        double,     outset,
+
+-> Margin properties are used to create space around elements, outside of any defined borders.
+-> Padding properties are used to generate space around an element's content, inside of any defined borders.
+
+-> These both are exactly same as borders and also have their individual sides too, 
+    margin-top,     margin-bottom,      margin-left,        margin-right
+    padding-top,    padding-bottom,     padding-left,       padding-right
+
+[usually, top left bottom right]
+
+Declaring class and id:
+    {inside body}
+    <p class="para1">
+    hellloo
+    </p>
+    <p id="p1">
+    nooo
+    </p>
+
+Text Alignment:
+    -> left, right, centered or justified
+    -> example:
+    {inside style}
+    .para1{
+        text-align : justify;
+        width: 300px;
+    }
+
+Text Decoration:
+    -> there are 3 types, underline
+                          wavy
+                          line-through
+                          none
+    -> example:
+    {inside style}
+    .para1{
+        text-decoration=wavy;
+    }
+
+Text Transformation:
+    -> 3 types:
+        uppercase
+        lowercase
+        capitalize
+
+Text Spacing:
+    -> 3 types:
+        text-indent
+        text-spacing
+        word-spacing
+
+->font-family, can be used to change the fonts in CSS
+
+CSS Display:
+    -> This both displays and hides data
+    -> display options
+    inline,     [displays in a single line]
+    grid,
+    block,      [displays in an individual loong line]
+    none
+    flex,
+
+CSS Positioning:
+    
+    -> static : an element with position: static; is not positioned in any special way; it is always positioned 
+                according to the normal flow of the page
+    
+    -> relative: an element with position: relative; is positioned to its real position
+    
+    -> absolute: an element with position:absolute; is positioned relative to the nearest positioned ancestor 
+                 (instead of positioned relative to the viewport, like fixed)
+
+    -> fixed: an element with position: fixed; is positioned relative to the viewport, which means it always
+              stays in the same place even if the page is scrolled. The top, left, bottom and right properties
+              are used to postion the element.
+    
+    -> sticky: an element with position:sticky ; is positioned based on the user's scroll position
+
+Z-Index:
+    -> This property is very useful, as it helps us remove any overlapping present in our webpage
+    -> example:
+    {inside style}
+    img{
+        width:200px;
+        height:200px;
+        position:absolute;
+        z-index:-1;
+    }
+
+CSS Overflow:
+    -> this is used whenever the text is too long to be controlled, to bring it under our precise control
+    -> we got 4 options:
+        visible,    scroll,
+        hidden,     auto
+    
+    -> we have to add it in the <style>
+    as, 
+    [element]{
+        ''''''''''''''
+        background-color:green;
+        overflow: scroll;
+    }
+
+CSS Float:
+    -> this property specifies how an element should float.
+    -> the CSS clear property specifies what elements can float beside the cleared element and on which side
+    -> left or right...thats all.
+    -> default is left.
+    ->example
+    [element]{
+        '''''''''
+        float: left;
+    }
+
+Pseudo-Classes:
+    -> it is used to define a special state of an element 
+    -> for example, it can be used to:
+        style an element when a user mouses over it
+        style visited and unvisited links differently
+        style an element when it gets focus
+    -> they have several subclasses, such as
+
+    :first-child,           :link,                  :enabled,
+    :last-child,            :hover,                 :invalid,
+    :nth-child,             :active,                :read-only,
+    :nth-last-child(),      :target,                :valid
+    :nth-of-type(),         :focus,                 :required
+    :empty,                 :checked,
+    :not,                   :disabled,
+
+    -> example,
+    <head>
+    <style>
+    div ul li:last-child{
+        color:green;
+    }
+    div ul li:first-child{
+        color:blue;
+    }
+    </style>
+    </head>
+    <body>
+        <div>
+            <ul>
+                <li>first<li>
+                <li>second</li>
+                <li>third</li>
+                <li>fourth</li>
+                <li>fifth</li>
+                <li>sixth</li>
+            </ul>
+        </div>
+    </body>
+
+
+-> To make the selected text-box stand out, we have to add
+    {inside style}
+    input:focus{
+        background-color:blue;
+    }
+
+-> for checkboxes and radio,
+    {inside style}
+    input[type="checkbox"]:checked{
+        box-shadow: 0 0 10px 5px red; 
+    }
+
+
+Pseudo Elements:
+
+-> ::before                             insert some content before some
+-> ::after                              insert some content after some
+-> ::selection                          matches the portion of an element that is selected by the user
+-> ::marker                             selects the markers of list items
+-> ::placeholder                        selects form elements with text and let you style the placeholder text
+    {the placeholder text is set within the placeholder attribute, which specifies a hint that describes the expected value of an input field}
+
+=> usage:
+
+    {inside style}
+    [element]::after{
+        content:"hellooo";
+        color:green;
+        font-size:30px;
+    }
+
+-> the opacity property specifies the opacity/transparency of an element.
+
+-> The !important rule in CSS is used to add more importance to a property/value than normal. 
+   If you use this, it will overwrite ALL previous styling rules for that specific property on that element.
+
+-> Border Radius:
+    -> CSS border-radius property defines the radius of an element's corners.
+    -> With this, we can
+        => rounded corners for an element with a specified background colour
+        => rounded corners for an element with a border
+        => rounded corners for an element with a background image
+
+    example:
+    border-radius=10px 10px 10px 10px;
+
+<head>
+<style>
+div{
+    width:400px;
+    height:200px;
+    margin: 50px 10px;
+    border: 2px solid red;
+    border-radius: 30px;
+    box-shadow: 0px 0px 20px 2px red;                               this will make a red glowing box
+    transition: 0.5s;                                         turn blue when the mouse pointer is on top of it
+}
+div:hover{
+    box-shadow: 0px 0px 20px 2px blue;
+}
+</style>
+</head>
+<body>
+    <div>
+        <p style="padding: 10px">
+            {content}
+        </p>
+    </div>
+</body>
+
+Grid System:
+    -> the CSS grid layout module offers a grid-based layout system with rows and columns, making it easier
+       to design web pages without having to use floats and positioning
+    
+    -> Properties:
+        -> Grid-template-rows                       Justify-items                  Grid-row-start                                  
+        -> Grid-template-columns                                                   Grid-row-end                 
+        -> Grid-template-areas                      Justify-self                   Grid-column-start                     
+        -> Grid-row-gap                             align-items                    Grid-column-end                                        
+        -> Grid-column-gap                                                         Grid-row                             
+        -> Grid-gap                                 align-self                     Grid-column
+    
+Flex-Box:
+    -> the flex property sets the flexible length on flexible items. Note: if the elements is not a flexible
+        item, the flex property has no effect.
+    
+    -> Flex properties:
+        -> Flex-direction            Flex-wrap                   Flex-flow
+        -> Flex-grow                 Justify-content             Align-content
+        -> order                     Align-self                  Align-items
+
+Media Queries:
+    -> its used to make the webpage responsive even when minimized
+    -> properties are, i. All
+                       ii. Screen
+                       iii. Print
+
+    example:
+    @media screen and (max-width:200px){CSS properties}

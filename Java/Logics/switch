@@ -1,0 +1,38 @@
+instead of typing this, 
+
+		if(choice==1)
+		{
+			System.out.println("Sum:"+ (n1+n2));
+		}
+		else if(choice==2)
+		{
+			System.out.println("Difference:"+ (n1-n2));
+		}
+		else if(choice==3)
+		{
+			System.out.println("Product:"+ (n1*n2));
+		}
+		else if(choice==4)
+		{
+			System.out.println("Dividend:"+ (n1/n2));
+		}
+
+we can just use a basic switch statement
+
+        switch(choice)
+        {
+            case 1:
+                System.out.println("Sum:"+ (n1+n2));
+                break;
+            case 2:
+                System.out.println("Difference:"+ (n1-n2));
+                break;
+            case 3:
+                System.out.println("Product:"+ (n1*n2));
+                break;
+            case 4:
+                System.out.println("Dividend:"+ (n1/n2));
+                break;
+            default:
+                break;
+        }

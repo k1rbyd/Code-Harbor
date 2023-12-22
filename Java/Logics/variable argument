@@ -1,0 +1,35 @@
+==> to pass an array as a parameter with just the values, we cant do as we please, instead we have to
+
+    ==> new int[] {....}
+
+==> instead of using this, we can use variable arguments here, to do the same job  
+                        {passing an array as a parameter}
+
+
+==> a simple method accepting variable argument
+
+void print(int... values)
+{
+    . . . . 
+     . . . .
+    . . . . 
+     . . . . 
+}
+
+==> this will take in the parameters as an array
+
+eg:
+    void print(int... values)
+    {
+        System.out.println(Arrays.toString(values));
+    }
+
+    int sum(int... values)
+    {
+        int s;
+        for(int i:values)
+        {
+            s+=i;
+        }
+        return s;
+    }

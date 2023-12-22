@@ -1,0 +1,22 @@
+==> what is java script
+
+    i. a web-based programming language
+    ii. adds interactive behaviour to webpages
+    iii. build web and mobile applications
+    iv. create command line tools
+    v. game development
+
+==> this is no way close to java
+
+
+==> we can like our css to our html file in the head portion
+    using <link rel="stylesheet" href="style.css">
+
+==> single and double quotes have no difference
+
+==> to print any statement, all we have to do is,
+    console.log();
+
+==> we can also make alerts,
+    windows.alert("noooo");
+

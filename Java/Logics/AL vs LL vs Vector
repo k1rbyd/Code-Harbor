@@ -1,0 +1,51 @@
+ArrayList vs LinkedList
+
+==> ArrayList and vectors, the basic data structure used here is Arrays
+
+==> Linkedlist, the basic data structure used here in Linked list
+
+
+
+==> in Arrays, inserting and deleting elements are hard and costly, but accessing inst
+
+==> in Linked lists, inserting and deleting are easy, but accessing elements are hard
+
+
+
+class ArrayList / Vector implements List<E>
+{
+    // inserting and deletion are slower compared to Linked List
+    // almost constant time - access
+}
+
+class LinkedList implements List<E>
+{
+    // elements are doubly linked - forward and back
+    // iteration is slower than ArrayList
+    // faster insertion and deletion
+}
+
+
+
+ArrayList vs Vector
+
+==> Vector has been in Java since 1.0
+
+==> ArrayList has been in Java since 1.2
+
+==> there are a lot of synchonizing in vectors and not at all any in ArrayList
+
+==> basically, whens theres synchronizing, data is secure, only one user can change even thought multiple can access it thro inheritance
+
+class Vector implements List<E>
+{
+    // thread safer - synchonized methods
+    // almost constant time - access
+}
+
+class ArrayList implements List<E>
+{
+    // not thread safe - non-synchonized methods
+    // better performance, since no threads are waiting for other threads to execute synchronizing
+}
+

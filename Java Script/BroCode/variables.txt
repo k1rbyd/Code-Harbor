@@ -1,0 +1,36 @@
+
+==> a variable is a container for storing data
+
+==> a variable behaves as if it was the value that it contains
+
+==> there are 2 steps, declaration and assignment
+
+==> to declare a variable, we can either use let or var
+    let x;
+    let age = 10;
+
+==> the default value of variables is undefined
+
+==> there are 4 primitive types,
+
+    number
+    string
+    boolean
+
+==> we can display multiple things,
+
+    let name = "Kaushik";
+    console.log("Hello", name, "Nice to meet you");
+
+==> here is now a complex part,
+
+suppose in our html page, inside the body, we add in 2 para-points
+
+    <p id = 'p1'></p>
+    <p id = 'p2'></p>
+
+now, in our JS file, we can add in
+
+    document.getElementById('p1').innerHTML = "Hello " + name;
+    document.getElementById('p2').innerHTML = "You are " + age;
+

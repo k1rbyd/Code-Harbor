@@ -1,0 +1,30 @@
+==> its very hard to insert and delete data from an array
+        ==> we have to make a new array and then copy and paste
+
+WE HAVE TO IMPORT ARRAY LIST FIRST          ==> import.java.util.ArrayList
+
+==> to make this simple, java has something called arraylist
+
+declaration:
+
+        ==>  ArrayList arr = new ArrayList();
+
+            arr.add("hii");
+            arr.add("hello");
+            arr.add(1);
+            arr.add(true);
+
+            arr.remove("hii");           we can also, remove with index  arr.remove(2);
+
+        {this one can contain all data types, and this is never recommended}
+
+        eg,
+                ArrayList<Integer> arr = new ArrayList<Integer>();
+                { here we can add only integers}
+
+                ArrayList<String> arr = new ArrayList<String>();
+                { here we can add only strings}
+
+to find the length of ArrayList, we have to use         .size()
+to get the min, max we can just use                 Collections.max(arr);   arr is an
+                                                    Collections.min(arr);   ArrayList

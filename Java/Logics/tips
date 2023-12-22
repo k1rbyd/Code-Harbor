@@ -1,0 +1,20 @@
+
+==> java.lang.* is imported by default
+
+==> when 2 class objects are compared directly with the .equals() method, then only their address/location is compared
+
+==> access modifiers dont exactly protect our program. All it does is, it helps us decide what kind of things we let be accessible and what not
+
+==> a public class is visible everywhere whereas a default class is only available within its package
+
+==> we can make a variable final, and we can make it a constant
+
+==> for a static nested class , an instance of it can be created without creating an instance of the Nested class
+
+==> a non-static nested class is called a inner class and an inner class cannot exist without the enclosing class instance.
+
+==> A StaticNestedClass, on the other hand, is a static thing. So, it can exist without an instance of the enclosing class.
+
+==> inside a StaticNestedClass, you cannot access the member variables of the enclosing class
+
+==> any class that doesnt have a name by an instance is called an anonymous class

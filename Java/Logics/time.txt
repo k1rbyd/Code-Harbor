@@ -1,0 +1,48 @@
+we have to first import time,
+
+==> import java.time.*
+
+commands,
+    
+    LocalDate today = LocalDate.now()
+
+    ==> today,getYear();
+    ==> today.getDayOfWeek();
+    
+    ==> today.getMonth();
+    ==> today.getMonthValue();
+
+    ==> today.isLeapYear();
+    ==> today.lengthOfYear();
+    ==> today.lengthOfMonth();
+
+    ==> today.plusDays(100);
+    ==> today.plusMonths(100);
+    ==> today.plusYears(100);
+
+    ==> today.minusDays(100);
+    ==> today.minusMonths(100);
+    ==> today.minusYears(100);
+
+    we can also do stuff like
+
+    LocalDate HundredYearsBefore = today.minusYears(100);
+    LocalDate HundredYearsAfter = today.plusYears(100);
+
+==> BUT TODAY WILL ALWAYS STAY TODAY, IMMUTABLE once again
+
+{ LocalDateTime, is the same as LocalDate, but we can go a bit more micro in this option}
+
+we can also, 
+
+    ==> today.withYear(2020);
+    ==> today.withDay(20);
+    ==> today.withMonth(2);
+
+we also have got this option, 
+
+    LocalDate yesterday = today.minusDays(1);
+
+    ==> today.isBefore(yesterday);          ==> false
+    ==> today.isAfter(yesterday);           ==> true
+    

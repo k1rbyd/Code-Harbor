@@ -1,0 +1,68 @@
+
+==> usually "." refers to a directory
+
+import java.nio.files.Paths;
+
+
+public static void main(String[] args)
+{
+    Files.list(Paths.get(".")).forEach(System.out::println);
+}
+
+Files.list, gives all the directories present in that location
+
+
+we can also use Files.walk, but here we can go level wise
+
+we get the same output for,
+    Files.walk(currentDirectory, 1).forEach(System.out::println);
+
+we can go in 4 levels deep with, 
+    Files.walk(currentDirectory, 4).forEach(System.out::println);
+
+we can also, use filters
+
+Precidate <? super Path> predicate = path -> String.valueOf(path).contains(".java");
+
+    Files.walk(currentDirectory, 4).filter(predicate).forEach(System.out::println);
+
+==> we can also use the .find() method
+
+BiPredicate<Path, BasicFileAttributes> matcher = (path, attributes) -> valueOf(path).contains(".java") ;
+
+Files.find(currentDirectory, 4, matcher);
+
+we can also, use directory
+
+BiPredicate<Path, BasicFileAttributes> directorymatcher = (path, attributes) -> attributes.isDirectory();
+
+Files.find(currentDirectory, 4, directorymatcher);
+
+==> we have to import java.io.IOException
+
+==============================================================================
+
+                            READING AND STUFF
+
+one way to do it, is this
+
+    Path pathFileToRead = Path.get(".location");
+    List<String> lines = Files.readAllLines(pathFileToRead);
+    System.out.println(lines);
+
+another way will be,
+
+    Files.lines(pathFileToRead).forEach(System.out::println)
+
+==============================================================================
+
+                            Writing and STUFF
+
+one way to do it is, 
+
+    Path pathFileToWrite = Paths.get(".location");
+    List<String> list = List.of("Apple","Ball","Cat");
+
+    Files.write(pathFileToWrite,list);
+
+    

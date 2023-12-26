@@ -1,0 +1,91 @@
+
+==> this was made for Java in specific { not for Spring Boot in specific }
+
+
+
+HTML
+-----
+
+==> a small brush-up on HTML,
+
+	<html> : start and end of the file
+	
+	<head> : starts the head
+	
+	<body> : context of the file
+	
+		<h1> <h2> <h3> : all these are various heading levels
+		<p> : these create a paragraph
+	
+	</body>
+	</html>
+	
+
+
+
+--> CDN : content delivery network
+
+==> to add in CNN resources, we must add in this line in the <head> syntax thingy
+
+==> an example link is,
+	
+	    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+
+		<script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"></script>
+
+==> the basic change we first notice is the fond change
+
+
+--> BootStrap Grid System
+
+==> its a robust CSS frame-work
+
+==> its a really standard grid system
+
+==> it divides up the page into rows, and each row has got 12 blocks
+
+==> we will be using,
+	<div class = " " >
+	
+	
+	</div>
+	
+==> and in these, we will have <div class = "row">....</div>
+
+==> and in these, we will have column classes
+
+	like, <div class = "coll-md-1.....12>
+			</div>
+			
+
+
+
+
+
+Required Dependdencies
+-----------------------
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	
+
+--> 

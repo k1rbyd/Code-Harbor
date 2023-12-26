@@ -40,7 +40,7 @@ Quotation:
 	-> <small> : smaller text
 	-> <del> : deleted text
 	-> <ins> : inserted text
-	-> <sub> : subscripted text 
+	-> <sub> : subscripted text
 	-> <sup>: superscript text
 	
 	-> bold and important texts are almost the same
@@ -60,7 +60,7 @@ Attributes:
 	-> Attributes usually come in name/value pairs like name = "Value"
 
 -> <font> tag gives the colour to your text in HTML.
--> example:	<font color = 'blue'><b> helloo </b></font> 
+-> example:	<font color = 'blue'><b> helloo </b></font>
 
 -> to change the background colour, we have to go to the body tag and type,
 <body bgcolor = 'blue'>
@@ -70,7 +70,7 @@ Anchor:
 	-> These link one website to another.
 	-> The blue links we see online are hyperlinks
 
-Creating an anchor:- 
+Creating an anchor:-
 {inside the body tag}
 <a href="https://www.youtube.com/">Youtube.com</a>
 
@@ -138,7 +138,7 @@ Videos:
         			<source src="https://www.youtube.com/watch?v=dQw4w9WgXcQ/" type="WebM" />
     		</video>
 
-Audio: 
+Audio:
 	-> For audio tag, all we need to use is
 	<audio src="location" controls>
 	</audio>
@@ -147,16 +147,16 @@ Form tags:
 	-> these are the tags which are used for user input
 	-> there are multiple input types, example
 		<input type = "text">				this gives out a text box for us to reply with
-		<input type = "radio">				this gives out a single correct mcq kinda circle			
-		<input type = "checkbox">				this gives a box where we can tick			
-		<input type = "submit">				this displays the submit button 
+		<input type = "radio">				this gives out a single correct mcq kinda circle
+		<input type = "checkbox">				this gives a box where we can tick
+		<input type = "submit">				this displays the submit button
 
 	-> to form a form page, we need to use the <form></form> tags
 	-> a basic example
 		<form action="">
-		    <label for="fname"> first name:</label><br>	
+		    <label for="fname"> first name:</label><br>
 		<input type = "text" id = "fname" name="fname" value="Enter first name"><br>
-		<label for="lname">last name:</label><br>	
+		<label for="lname">last name:</label><br>
 		<input type = "text" id="lname" name="lname" value="Enter last name"><br>
 		<input type="submit" value="Submit">
 		</form>
@@ -209,7 +209,7 @@ Basically all the other input types are kinda the same.
 	-> multiple, its an attribute that specifies that the user is allowed to enter more than one value in an input field
 	-> placeholder , tells us abt the pattern
 	ex:
-	<input 
+	<input
 	 type="tel"
 	 id="phone"
 	 name="phone"
@@ -231,3 +231,16 @@ Elements:
 				<option value="">name</option>
 				<option value="">sex</option>
 	-> to draw a line for seperation and stuff, we use "<hr/>"
+	
+	
+	
+========================================================================================================================
+========================================================================================================================
+========================================================================================================================
+========================================================================================================================
+========================================================================================================================
+========================================================================================================================
+
+										NEW NOTES FOR HTML
+
+

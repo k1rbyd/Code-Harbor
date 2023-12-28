@@ -1,0 +1,7 @@
+Adding files to github
+
+i. git init
+ii. git remote add origin link {the one which ends with .git}
+iii.git add .
+iv.git commit -m "commit name"
+v.git push -u origin master

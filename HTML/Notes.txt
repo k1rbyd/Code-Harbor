@@ -229,7 +229,7 @@ Elements:
 			<select name="" id="">
 				<option value="">country</option>
 				<option value="">name</option>
-				<option value="">sex</option>
+				<option value="">gender</option>
 	-> to draw a line for seperation and stuff, we use "<hr/>"
 	
 	
@@ -243,4 +243,893 @@ Elements:
 
 										NEW NOTES FOR HTML
 
+--> the world wide web is an information system where documents are available over the interent
 
+--> the documents are transferred over HTTP
+	{Hyper Text Transfer Protocol}
+
+--> HTTP is a standard set of rules between a client and the server
+
+--> A typical webpage is made up of HTML, CSS and JavaScript
+
+--> HTML provides the structure of the webpage and can arguably be the most important of those 3
+
+--> HTML		:	the content on a page
+--> CSS			:	the styles applied on to the page content
+--> JavaScript	:	the behaviour or action of the page's contents
+
+
+==> HTML stands for Hyper Text Mark-up Language
+
+--> HTML was originally first created for the structuring and sharing of research papers between universities
+
+--> some starter tags:
+
+	i. Paragraph tag,		<p>....content....</p>
+	ii. Heading tag,
+			==> there are 6 levels of headings in HTML,
+
+				level 1 to level 6	, <h1> <h2> <h3> <h4> <h5> <h6>
+				
+				==> they are all used to create headings but they are used to create different levels of section headings
+
+				==> there should only be one <h1> header in our document; its the one main section heading of the entire web page
+
+	iii. comments,		<!-- comments -->
+
+==> Morzilla Development Network	: mdn
+
+	--> its a great resource when learning anything web development related
+
+==> Body tag;	<body> </body>
+	
+	--> all the actual content of the webpage/html document go in here
+	--> all the links, the forms, the headers
+
+==> Head tag;	<head> </head>
+
+	--> this is where all the meta information about the document goes
+	--> css styles link, js link and all those
+
+	--> it also contains the title tag;		<title> </title>
+
+==> other tags :
+
+	i. strong tag :	<strong>.....</strong>
+			--> it makes the text within it stand out from the others
+					usually the browser takes it in bold, but using CSS we can change that
+				
+	ii. "bring attention to" tag :		<b>....</b>
+			--> this was priorly known as the bold tag, but now this isnt the same
+					all the styling has been pushed to CSS and therby this change
+				
+	iii. emphasis tag :	<em>......<em>
+			--> this is used for emphasising something
+					usually the browser takes it in as italics
+						but we can change that with the help of CSS
+	
+	iv. i element : <i>....</i>
+			--> this is usually known as the italics tag
+					it is used to set off from the normal text for some reason (latin words or technical terms)
+
+==> Nesting :
+	
+	--> everything is nested in <body> and the body is nested in the <html>
+	
+	--> nesting is very common and its a very important part of working with HTML
+
+==> superscript and subscript :
+
+	--> superscript	: <sup>...</sup>
+	--> subscript : <sub>...</sub>
+
+
+==> Lists :
+	
+	--> these are very important as they are more commonly used
+
+	--> there are lot of list forms
+
+	--> there are 2 steps in creating a list
+
+		a. unordered lists:
+			--> they are bullet pointed lists
+
+			--> we can change the styles in CSS from bullets to anything else
+
+			--> here is an example,
+
+			<h2> Lists </h2>
+			<ul>
+				<li> first </li>
+				<li> second </li>
+				<li> third </li>
+			</ul>
+
+		b. ordered lists:
+			--> they are ordered with numberic systems
+
+			--> here is an example,
+	
+			<h2> Lists </h2>
+			<ol>
+				<li> first </li>
+				<li> second </li>
+				<li> third </li>
+			</ol>
+
+	--> <ul> for unordered lists, and <ol> for ordered lists
+
+	--> we can also have nested lists, like this
+
+		<h2> Drinks <h2>
+		<ul>
+			<li> Hot
+				<ul>
+					<li> Tea </li>
+					<li> Coffee </li>
+				</ul>
+			</li>
+
+			<li> Cold
+				<ul>
+					<li> Ice Cream </li>
+					<li> Chocolate </li>
+				</ul>
+			</li>
+		
+		--> if we want a list under something, then we have to have them all under the same <li> tag
+
+
+==> Inline and Block
+
+	--> tags like , <i> <strong> <b> <em> and such, dont take a new line and are called inline elements
+
+	--> inline elements fit in the flow of the content without pushing anything else without new lines
+
+	--> whereas, tags like <h1....h6> and such are called block elements
+
+	--> block elements take up a full block horizontally across the document, pushing any elements that follow
+
+
+
+Links
+------
+
+==> there are 2 parts in creating a link tag
+		--> link text
+		--> destination
+
+==> we use the anchor element to create hyperlinks
+				{<a>}
+
+==> eg:
+
+	<a href = "https://www.google.com"> Go to google </a>
+
+	here, href is an attribute
+				--> an attribute is something that goes inside the openting tag of the anchor element
+
+				--> attributes control the elements behaviour
+
+==> we can also make a list and keep links as the items there
+
+==> relative links,
+		--> to reach different html files, within the same directory, we can use links too
+
+		--> instead of using all the http: stuff, we just need to do something like this,
+
+			<a href = "file name"> go to such and such </a>
+
+==> we can also link links to elements on a page, like
+		--> first we have to create a specific id for the to-be-linked element
+		--> and then in the anchor, we do this, href = "#id", whatsoever is the id
+
+		eg:
+
+			<a href = "#section_down_below"> Jump below </a>
+			.
+			.
+			.
+			.
+			<h2 id="section_down_below"> Welcome to the below section</h2>
+
+	
+==> the other types of links:
+		
+		--> email addresses
+
+		--> telephone links
+
+==> if we want to set up a link to somebody's email id, then we do
+
+		==> <a href = "mailto:someone@gmail.com"> Send an email to someone </a>
+	
+==> if we want to set up a link to telephone numbers, we do this
+
+		==> here is an example, for a mobile as well as a lamdline
+
+		<a href="tel:+918015843977">Telephone number</a>
+		<a href="tel:+1(555)5309">LandLine number</a>
+
+
+Images
+-------
+
+==> to create image elements, we use the <img> tag
+
+==> its a self closing tag
+
+==> the mandatory attribute for the img tag is the src attribute
+
+==> the src attribute has the location of the file
+
+	example : <img src="location" >
+
+==> usually when you render an image, you get its full size
+
+==> using HTML, we can create and paste the image
+
+==> inorder to give it some more details and stuff, we use CSS
+
+==> there is also another tag in the img tag, its called alt { alternate text }
+
+	eg:
+			<img src = "location" alt = "some name" >
+
+
+
+Tables
+-------
+
+==> to create a table in our page we use the <table>....</table> tag
+
+==> all the content i.e rows and columns of the table are all defined inside this tag
+
+==> and then we have rows...we use <tr>...</tr> for that {table row}
+
+==> and in that we have table data cell...and we use the..<td>....</td> tag for those
+
+heres a simple example,
+
+	<table>
+		<tr>
+			<td> Avatar </td>
+			<td> 2.9b </td>
+		</tr>
+		<tr>
+			<td> Avengers </td>
+			<td> 2.7b </td>
+		</tr>
+		<tr>
+			<td> Titanic </td>
+			<td> 2.1b </td>
+		</tr>
+	</table>
+
+
+==> to create the table header, we use the tag <th>...</th> under the <tr> tag
+	like this,
+
+	<table>
+
+		<tr>
+			<th> Movie Name </th>
+			<th> Worldwide Gross </th>
+		</tr>
+
+		<tr>
+			<td> Avatar </td>
+			<td> 2.9b </td>
+		</tr>
+		<tr>
+			<td> Avengers </td>
+			<td> 2.7b </td>
+		</tr>
+		<tr>
+			<td> Titanic </td>
+			<td> 2.1b </td>
+		</tr>
+	</table>
+
+==> if we dont declare the thead tag, then all the content gets stored in tbody
+
+==> so here is a better way to write the table
+
+	<table>
+		<thead>
+			<tr>
+				<th> Movie Name </th>
+				<th> Worldwide Gross </th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td> Avatar </td>
+				<td> 2.9b </td>
+			</tr>
+			<tr>
+				<td> Avengers </td>
+				<td> 2.7b </td>
+			</tr>
+			<tr>
+				<td> Titanic </td>
+				<td> 2.1b </td>
+			</tr>
+		</tbody>
+	</table>
+
+
+==> adding captions to the table, we use the <caption> tag
+	we have to add it before the thead tag
+
+for example, like this
+
+	<table>
+		<caption>
+			Huge Hits
+		</caption>
+		<thead>
+			<tr>
+				<th> Movie Name </th>
+				<th> Worldwide Gross </th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td> Avatar </td>
+				<td> 2.9b </td>
+			</tr>
+			<tr>
+				<td> Avengers </td>
+				<td> 2.7b </td>
+			</tr>
+			<tr>
+				<td> Titanic </td>
+				<td> 2.1b </td>
+			</tr>
+		</tbody>
+	</table>
+
+==> and for ending a table, its best if we create a <tfoot>....</tfoot> for the tables footer
+
+==> it comes after the <tbody> tag
+
+
+
+==> rowspan and colspan
+
+	--> to change the colspan of an td, we do this
+
+		<td colspan = "count"> content </td>
+
+			---> the default value is 1, but we can change that as per our wish
+
+	--> similarly, to change the rowspan, we do the same
+
+		<td rowspan = "count"> content </td>
+
+			---> the default value is 1 here too
+
+
+
+FORMS
+------
+
+==> forms are everywhere, and HTML is used to generate these forms
+
+==> CSS styles are used to make them look better, but the base form is from HTML
+
+==> there are different input fields
+
+	a. text input:
+
+			--> <input type="text">
+
+			--> its one of the basic types of inputs
+
+
+==> suppose we want to give an idea as to what info it is to be typed in,
+	we can do something like this
+
+		<input type="text" placeholder="username" >
+
+			this will create a textbox with the initial value of username displayed on it
+
+	b. password input:
+
+			--> its very similiar to text input, its a textbox too
+			--> but we cant see what we have typed inside
+
+			<input type="password" placeholder="password" >
+				{just used the placeholder to define what it is}
+
+==> all the inputs, check boxes and all other related stuff fall under a form tag
+
+==> it shows no big physical appearance
+
+==> in a typical web application, it holds a bunch of form controls, inputs, buttons and checkboxes
+
+==> when the form is submitted, the data gets sent somewhere
+
+		==> the action attribute which is defined in the submit button is where the data gets sent
+
+		i.e.		<form action="/some_link">
+					.
+					.
+					.
+					</form>
+		
+		==> and we also have the method attribute, this is the type of HTTP Request that the form will submit
+	
+		i.e.		<form action="/search" method="get">
+					.
+					.
+					.
+					</form>
+			
+	
+==> to create a button, we need to use the <button> tag
+
+	==> a simple button can be made just by,
+
+			<button> click here </button>
+
+==> when click on it, it takes us to the site declared in the action attribute
+
+==> if the button tag is moved outside the form, it doesnt do anything
+		--> it only submits the form when its defined inside the form
+
+==> there is a type attribute in the button tag, and its default value is "submit"
+
+		i.e. 	<button type="submit"> click me </button>
+
+==> there is also another way to create a button, we can just do this
+
+	<input type="submit" value="click here" />
+
+
+
+
+==> there are different methods in which we can modify the input tag
+
+==> here are a few examples,
+
+	a. we can make it accept only emails...or we can say, email shaped inputs
+
+		<form action ="">
+			<input type="email" placeholder="email">
+			<button>Submit</button>
+		</form>
+	
+	b. similarly, we have the url input too, here it is
+
+		<form action ="">
+			<input type="url" placeholder="url">
+			<button>Submit</button>
+		</form>
+
+	c. we also have the telephone too,
+
+		<form action ="">
+			<input type="tel" placeholder="telephone">
+			<button>Submit</button>
+		</form>
+
+			but this isnt used much, as only a specific kind of input is allowed
+		
+	d. there is also a pure number input type,
+
+		<form action ="">
+			<input type="number" placeholder="only numbers">
+			<button>Submit</button>
+		</form>
+
+	
+
+
+
+==> giving a label to the inputs
+
+	--> first we have to make a label tag, with a for attribute
+
+		--> and this for attribute should map to a id attribute of a input tag in the form
+
+	like this,
+
+	<label for="username">Enter your username</label>
+
+	<input type="text" id="username" />
+
+
+
+
+ 
+THE NAME ATTRIBUTE
+--------------------
+
+==> eventually the data we submit will go somewhere, so for that we have to give them a name
+		--> which is exactly why we create this attribute
+	
+	eg:
+
+		<input type="text" placeholder="username" name="username" />
+
+		the input of this will be stored in the username variable
+
+
+
+
+THE REQUIRED ATTRIBUTE
+------------------------
+
+==> the inputs we have created so far are all optional, they can be skipped
+
+==> if empty, no errors will be passed and thats wheere this comes in
+
+==> here is an example,
+
+	<input type="password: required />
+
+
+
+
+
+
+DIVs
+-----
+
+==> usually in forms, we group the labels and the inputs together
+
+==> this is where the <div> tag comes in place
+
+==> this is just a normal generic container
+
+==> its a block element, so it automatically takes up the line
+
+
+
+
+
+
+==> Text-Areas, they are very different from input-type-text boxes
+
+	--> their syntax is, <textarea>....</textarea>
+
+	--> its a multi-line input, and the user can adjust and change the size of the textbox in the active page
+
+	--> here is a basic snippet for easy understanding
+
+		<form action="">
+			<label id="text"> Text Area </label>
+			<textarea id="text"></textarea>
+		</form>
+	
+	--> but leaving it at this will look...hidious
+
+	--> therby we introduce rows and columns to this,
+
+		<form action="">
+			<label id="text"> Text Area </label>
+			<textarea rows="10" cols="30" id="text"></textarea>
+		</form>
+
+	--> this isnt the fixed size or anything, this is just the initial size and the user can change it in the site if wanted
+
+
+==> creating checkboxes,
+
+	--> they are a type of the input boxes
+
+	--> here is a sample,
+
+		<input type="checkbox" >
+
+	--> every element requires a label, but specially these check boxes
+
+	--> suppose we want to already check it initially itself, then we can do something like this
+
+		<input type="checkbox" checked>
+
+	--> this will make it checked by default, and we have to uncheck it manually
+
+==> creating numeric sliders,
+
+	--> we use the range input for this
+
+	--> here is an example,
+
+		<input type="range" min="0" max="10" >
+
+	--> this is a good thing if precision isnt required
+
+	
+	--> by default the initial value will be at the middle, but we can change that too
+			for that we have to do,
+
+			<input type="range" min="0" max="10" value="3">
+
+
+
+
+
+
+
+
+SELECT ELEMENTS
+----------------
+
+==> it doesnt fall under a type in the input tag
+
+==> it has a seperate tag and all those
+
+==> here is a basic one,
+
+	<select name="" id="" >
+	.
+	.
+	.
+	</select>
+
+==> to add the options in the drop down bar, we give in the option tag
+
+==> here is a snippet for better clarity
+
+	<select name="skilllevel" id="skilllevel">
+		<option> Level 1 </option>
+		<option> Level 2 </option>
+		<option> Level 3 </option>
+		<option> Level 4 </option>
+	</select>
+
+
+	---> and if we click submit, then the string inside will be passed on as the value, so therby we do this
+			--> we give in a specific value to all the options
+
+	<select name="skilllevel" id="skilllevel">
+		<option value="noob"> Level 1 </option>
+		<option value="beginner"> Level 2 </option>
+		<option value="expert"> Level 3 </option>
+		<option value="pro"> Level 4 </option>
+	</select>
+
+
+	--> by default the first option will be pre-selected, but if we want to change that, we can just
+
+		--> <option value = "" selected>....</option>
+
+			==> the keyword selected is just another boolean like checked
+	
+
+==> Radio Buttons,
+
+	--> its like single correct answer, you can only choose 1 option out of all those that are displayed
+
+	--> unlike select, its a type of input tag variable
+
+	--> we need to group all the options, so that we can make it select 1 only
+
+			----> inorder to do that, we just need to give all those the same name attribute
+		
+	--> here is a small code snippet,
+
+		<label for=""> Shirt Sizes </label>
+		<form action="">
+			<div>
+				<input type="radio" id="small" name="size">
+				<label for="small">Small</label>
+			</div>
+			<div>
+				<input type="radio" id="medium" name="size">
+				<label for="medium">Medium</label>
+			</div>
+			<div>
+				<input type="radio" id="large" name="size">
+				<label for="large">Large</label>
+			</div>
+			<div>
+				<input type="radio" id="xl" name="size">
+				<label for="xl">XL</label>
+			</div>
+		</form>
+
+	--> usually when we sumbit with some option selected, we get this
+
+		size = on {here, as the variable is named size}
+
+	--> but this isnt very helpful, so to change this and make it better, we can just use the value attribute again
+			like this here,
+		
+		<label for=""> Shirt Sizes </label>
+		<form action="">
+			<div>
+				<input type="radio" id="small" name="size" value="s">
+				<label for="small">Small</label>
+			</div>
+			<div>
+				<input type="radio" id="medium" name="size" value="m">
+				<label for="medium">Medium</label>
+			</div>
+			<div>
+				<input type="radio" id="large" name="size" value="l">
+				<label for="large">Large</label>
+			</div>
+			<div>
+				<input type="radio" id="xl" name="size" value="xl">
+				<label for="xl">XL</label>
+			</div>
+		</form>
+
+
+==> the disabled attribute
+
+	--> this is only used when we have to dynamically disable an input
+
+	--> we just need to add the attribute "disabled" in the opening tag of the input tag
+
+		<input ....... disabled>
+
+	--> its used just like checked, selected and so on and so forth
+
+
+==> fieldset and legends
+
+	--> best if we group all the buttons together than have a seperate div file for each
+	
+		--> here , we just use <fieldset>....</fieldset>
+
+		--> and <legend> tag is used when we want to give captions
+
+==> here is a basic example for all these,
+
+<body>
+    <h1>Checkout</h1>
+    <form>
+        <label for="drop-options">Payment Method</label>
+        <select id="drop-options" name="card">
+            <option value="visa">Visa Ending with 4566</option>
+            <option value="AE">American Express Ending in 1099</option>
+            <option value="Discover">Discover Ending in 2346</option>
+        </select>
+
+        <fieldset>
+            <legend>Shipping Method</legend>
+            <div>
+                <input type="radio" id="2day" name="day">
+                <label for="2day">FREE - Two Day Shipping</label>
+            </div>
+            <div>
+                <input type="radio" id="standard" name="day">
+                <label for="standard">FREE - Standard Shipping (4-5 Bussiness Days) </label>
+            </div>
+            <div>
+            <input type="radio" id="5day" name="day">
+            <label for="5day">FREE - No Rush Shopping (5 Bussiness Days)</label>
+            </div>
+        </fieldset>
+        <div>
+            <label for="check">This is gift</label>
+            <input type="checkbox" id="check" name="check">
+        </div>
+            <button>Place Your Order</button>
+    </form>
+</body>
+
+
+
+
+
+==> Span
+
+--> spans are generic inline elements, they have no special meaning, but they can be styled using CSS
+
+--> it is useful when it comes to styling later on
+
+--> whenever other elements cant be used, like <i>, <b>, <em> and all, we can use this and style it later on
+
+
+==> an id is a unique specification, and if we want several elements to have the same id,
+
+		--> then we get ourselves a class
+
+
+
+==> More on div:
+
+	--> its pretty similar to span...but this is a block element whereas span being an inline element
+
+	--> we can group up spans in a div
+
+
+
+
+==> Semantic Markup
+
+	--> the html tag should "say" something about the meaning of their content
+
+	--> need for Semantic Markup:
+
+		a. accessibility
+		
+		b. search engines
+
+		c. developer sanity
+
+==> some key tags in Semantic Markup:
+
+		--> main tag, <main>....</main>
+
+			this is used for the main content of a webpage, excluding nav-bar side-bar and footer
+
+		--> header tag, <header>....</header>
+
+			this refers to the introducational info, it will often be stuff like
+				navigational elements, logos, search forms
+				
+		--> footer tag, <footer>....</footer>
+
+			this is often at the end of a page
+			they can be a footer of an entire web page and also for a specific section too
+
+		--> nav tag, <nav>....</nav>
+
+			this is used for navigational content
+			logically all sidebars should be a nav, the drop down lists on top of a page should also be a nav
+
+		--> aside tag, <aside>....</aside>
+
+			this represents a portion of the document whose content is only indirectly related to the document's main content
+					they are usually used for sidebars or call-out boxes
+
+		--> time tag, <time>....</time>
+
+			its an inline element that we can wrap around
+			we can just add it in the content, just like how we use <i>,<b> and so on
+
+==> its best if we use these in places where they sound good and logical to use
+
+
+
+
+
+audio tags
+-----------
+
+==> to play an audio we create an audio player using the audio tag in html
+
+==> steps needed:
+
+	i. we first create the audio tag
+
+	ii. in the opening tag itself, we declare the src of the audio file
+	
+	iii. add in the controls attribute along with the src
+
+==> if we want to autoplay the audio file, then we can add the autoplay attribute along in the opening tag of audio
+
+==> if we want to put it on a never ending loop, we can just add the loop attribute along in
+
+==> we can add in <a> anchor links and tags and some text, but it would be fallback content
+
+	i.e. unless you are using a very very old browser, that will be skipped
+
+<audio src="file" control autoplay> </audio>
+
+video tags
+-----------
+
+==> to play a video, we have to use the video tag
+
+==> similar to the audio tag, here we have
+
+	--> controls
+
+	--> muted
+
+	--> autoplay
+
+==> we can also provide multiple sources instead of 1 and see
+
+	--> the browser will try to play the first one and if it cant, then it will proceed to the next one and so on and so forth
+
+<video src="file" control autoplay> </video>

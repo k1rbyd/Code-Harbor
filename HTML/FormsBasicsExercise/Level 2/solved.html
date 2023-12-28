@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms Level 2</title>
+</head>
+<body>
+    <h1>Checkout</h1>
+    <form>
+        <label for="drop-options">Payment Method</label>
+        <select id="drop-options" name="card">
+            <option value="visa">Visa Ending with 4566</option>
+            <option value="AE">American Express Ending in 1099</option>
+            <option value="Discover">Discover Ending in 2346</option>
+        </select>
+
+        <fieldset>
+            <legend>Shipping Method</legend>
+            <div>
+                <input type="radio" id="2day" name="day">
+                <label for="2day">FREE - Two Day Shipping</label>
+            </div>
+            <div>
+                <input type="radio" id="standard" name="day">
+                <label for="standard">FREE - Standard Shipping (4-5 Bussiness Days) </label>
+            </div>
+            <div>
+            <input type="radio" id="5day" name="day">
+            <label for="5day">FREE - No Rush Shopping (5 Bussiness Days)</label>
+            </div>
+        </fieldset>
+        <div>
+            <label for="check">This is gift</label>
+            <input type="checkbox" id="check" name="check">
+        </div>
+            <button>Place Your Order</button>
+    </form>
+</body>
+</html>

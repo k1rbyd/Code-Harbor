@@ -1,2 +1,4 @@
 # CodeHarbor
-"Welcome to CodeHarbor, where code dresses up and syntaxes dance elegantly. Each line tells a story in its own language. It's a mix of formal and goofy programming charm, where even serious code has a witty touch. I've stored all my codes in different languages and will keep it updated. Feel free to use and enjoy ^^."
+
+ChatGPT
+"Welcome to CodeHarbor, where code is neatly organized and syntax flows smoothly. Each line conveys its own message. It's a blend of professionalism and a touch of humor, making even serious code enjoyable. I've stored my codes in various languages and will keep them updated. Feel free to use and enjoy!"
